@@ -13,7 +13,6 @@ export class AuthenticationService {
     this.loginStatus= true;
     localStorage.setItem('token',data.token);
     localStorage.setItem('rol',data.rol);
-    localStorage.setItem('userId',data.id);
     localStorage.setItem('email',data.email);
   }
 
@@ -23,14 +22,12 @@ export class AuthenticationService {
 
   getToken() :string {
     return localStorage.getItem('token') || '';
-
   }
 
   clear(){
     this.loginStatus= false;
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
-    localStorage.removeItem('userId');
     localStorage.removeItem('email');
   }
 

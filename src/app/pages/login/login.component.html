@@ -1,10 +1,10 @@
 <section class="login">
     <div class="container">
-        <form action="" class="formulario">
+        <form action="" class="formulario" (submit)="login()">
             <label id="email"></label>
-            <input required type="email" placeholder="Email"> <br><br>
-            <label class="pwd"></label>
-            <input required type="password" placeholder="Contraseña"><br> <br>
+            <input required type="email" placeholder="Email" name="email" [(ngModel)]="email"> <br><br>
+            <label for="pwd"></label>
+            <input required type="password" placeholder="Contraseña" name="password" [(ngModel)]="password"><br> <br>
             <button class="boton-login">Login</button>
         </form>
     </div>
