@@ -17,12 +17,13 @@ export class AuthenticationService {
     localStorage.setItem('email',data.email);
   }
 
-  getUserId(){
-    return localStorage.getItem('userId');
+  getUserId() : string {
+    return localStorage.getItem('userId') || '';
   }
 
-  getToken(){
-    return localStorage.getItem('token');
+  getToken() :string {
+    return localStorage.getItem('token') || '';
+
   }
 
   clear(){
