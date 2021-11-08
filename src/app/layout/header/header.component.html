@@ -1,1 +1,21 @@
-<p>header works!</p>
+<section class="Inicio">
+  <header class="encabezado">
+    <div class="container">
+      <nav class="menu-principal">
+        <ul>
+          <li><a href="">Usuarios</a></li>
+          <li><a href="">Maestros</a></li>
+          <li><a href="">Alumnos</a></li>
+          <li><a href="">Clases</a></li>
+          <li><a href="">Registros</a></li>
+          <button *ngIf="!loginStatus" type="button" class="button-login" data-target="#modelId"
+            aria-expanded="false">LOGIN</button>
+          <button *ngIf="!loginStatus" type="button" class="button-sign-in" data-target="#modelId"
+            aria-expanded="false">SIGN IN</button>
+          <button *ngIf="loginStatus" type="button" class="button-logout" data-target="#modelId"
+            aria-expanded="false">LOGOUT</button>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</section>
