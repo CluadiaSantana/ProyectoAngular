@@ -33,17 +33,19 @@ export class UserService {
 
       return this.httpClient.post( environment.host + environment.apiPath + "/users" ,{
 
-        headers: httpHeaders,
+        headers: httpHeaders
 
       }).toPromise();
 
     }else{
 
+      return this.httpClient.post( environment.host + environment.apiPath + "/users", data,{
 
+      headers: httpHeaders
 
-    }
+    }).toPromise();
 
-    return this.httpClient.post( environment.host + environment.apiPath + "/users", data).toPromise();
+  }
 
      
 
