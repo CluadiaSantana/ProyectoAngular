@@ -23,32 +23,20 @@ export class UserService {
 
 
 
-  getUsers(data: any):Promise <any>{
-
-    const httpHeaders = new HttpHeaders();
-
-    httpHeaders.append( "x-auth" , this.authenticationService.getToken() )
-
-    if(!data){
-
-      return this.httpClient.post( environment.host + environment.apiPath + "/users" ,{
-
+  getUsers(data: any): Promise <any>{
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken()
+    });
+    if(data==""){
+      console.log(this.authenticationService.getToken())
+      return this.httpClient.get( environment.host + environment.apiPath + "/users" ,{
         headers: httpHeaders
-
       }).toPromise();
-
     }else{
-
-      return this.httpClient.post( environment.host + environment.apiPath + "/users", data,{
-
+      return this.httpClient.get( environment.host + environment.apiPath + "/users",{
       headers: httpHeaders
-
     }).toPromise();
-
   }
-
-     
-
     };
 
 

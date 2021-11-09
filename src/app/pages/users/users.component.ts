@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/common/services/user.service';
-
+import { User } from 'src/app/common/datatypes/user';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -8,14 +8,19 @@ import { UserService } from 'src/app/common/services/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  //me quede con la lista de usuarios
-  
-  constructor(userService: UserService) { }
+  search: string="";
+  users: User[] = [];
+  constructor(private userService: UserService) { }
   
 
 
   ngOnInit(): void {
-
+    
+      this.userService.getUsers("").then(response=>{
+        this.users =response;
+      }).catch(e=>{
+        console.log('Error:  ', e);
+      })
   }
 
 }

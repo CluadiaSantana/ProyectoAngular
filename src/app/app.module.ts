@@ -14,6 +14,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { IsLoggedDirective } from './common/directives/is-logged.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignInComponent
+    SignInComponent,
+    IsLoggedDirective
   ],
   imports: [
     BrowserModule,

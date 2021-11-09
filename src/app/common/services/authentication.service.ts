@@ -5,12 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
-  loginStatus: boolean= false;
 
   constructor() { }
 
   saveToken(data : any){
-    this.loginStatus= true;
     localStorage.setItem('token',data.token);
     localStorage.setItem('rol',data.rol);
     localStorage.setItem('email',data.email);
@@ -24,8 +22,11 @@ export class AuthenticationService {
     return localStorage.getItem('token') || '';
   }
 
+  isLoggedIn(): boolean{
+    return !!localStorage.getItem('token');
+  }
+
   clear(){
-    this.loginStatus= false;
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
     localStorage.removeItem('email');

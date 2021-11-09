@@ -1,14 +1,15 @@
 <section class="buscador-usuarios">
-    <div class="container">
-        <form action="">
-          <label id="id">Id:</label>
-          <input type="text" id="id">
-          <button>Buscar</button>
-        </form>
-      </div>
+  <form >
+    <div >
+        <label for="searchbar"></label>
+        <input id="searchbar" class="form-control backbackPrimary" placeholder="SEARCH">
+        <button id="button-search">BUSCAR</button>
+    </div>
+</form>
 </section>
 <section>
   <ul>
-    <li *ngFor> "let item of user" </li>
+    <li *ngFor="let item of users"><div>{{item.username}}</div></li>
   </ul>
 </section>
+
