@@ -6,7 +6,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class IsLoggedDirective {
 
-  @Input() appIsLogged: undefined;
+  @Input() appIsLogged: boolean =false;
   isLoggedIn: boolean = false;
 
   constructor(private authentication: AuthenticationService, private elRef: ElementRef) { }
@@ -15,7 +15,7 @@ export class IsLoggedDirective {
 
 ngOnInit(){
  this.isLoggedIn = this.authentication.isLoggedIn(); 
- if(this.isLoggedIn == true){
+ if(this.isLoggedIn == !this.appIsLogged){
    this.elRef.nativeElement.remove();
  }
 }

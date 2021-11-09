@@ -9,11 +9,11 @@
           <li><a routerLink="/classes">Clases</a></li>
           <li><a hrouterLink="/r3ecords">Registros</a></li>
           <button type="button" class="button-login"
-            aria-expanded="false" routerLink="/login" [appIsLogged]>LOGIN</button>
+            aria-expanded="false" routerLink="/login" [appIsLogged]="false">LOGIN</button>
           <button type="button" class="button-sign-in" 
-            aria-expanded="false" routerLink="/sign"[appIsLogged]>SIGN IN</button>
+            aria-expanded="false" routerLink="/sign"[appIsLogged]="false">SIGN IN</button>
           <button type="button" class="button-logout" 
-            aria-expanded="false" [appIsLogged]>LOGOUT</button>
+            aria-expanded="false" [appIsLogged]="true">LOGOUT</button>
         </ul>
       </nav>
     </div>
