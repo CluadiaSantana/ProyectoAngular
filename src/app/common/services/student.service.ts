@@ -14,7 +14,7 @@ import { environment } from './../../../environments/environment';
 
 })
 
-export class UserService {
+export class StudentService {
 
 
 
@@ -23,17 +23,17 @@ export class UserService {
 
 
 
-  getStudent(data: any): Promise <any>{
+  getStudent(data: string): Promise <any>{
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken()
     });
     if(data==""){
-      console.log(this.authenticationService.getToken())
-      return this.httpClient.get( environment.host + environment.apiPath + "/student" ,{
+      //console.log(this.authenticationService.getToken())
+      return this.httpClient.get( environment.host + environment.apiPath + "/students" ,{
         headers: httpHeaders
       }).toPromise();
     }else{
-      return this.httpClient.get( environment.host + environment.apiPath + "/users",{
+      return this.httpClient.get( environment.host + environment.apiPath + "/students?id="+data,{
       headers: httpHeaders
     }).toPromise();
   }

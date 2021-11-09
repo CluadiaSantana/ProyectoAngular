@@ -28,7 +28,7 @@ export class UserService {
       'x-auth': this.authenticationService.getToken()
     });
     if(data==""){
-      console.log(this.authenticationService.getToken())
+      //console.log(this.authenticationService.getToken())
       return this.httpClient.get( environment.host + environment.apiPath + "/users" ,{
         headers: httpHeaders
       }).toPromise();
