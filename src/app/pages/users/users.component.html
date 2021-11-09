@@ -7,9 +7,13 @@
     </div>
 </form>
 </section>
-<section>
-  <ul>
-    <li *ngFor="let item of users"><div>{{item.username}}</div></li>
-  </ul>
+<section class="clearfix">
+ <div class="grid " id="data" *ngFor="let item of users">
+  <div class="data-item col-12 col-md-6 col-lg-3 ">
+    <h2 >Usuario: {{item.userName}}</h2>
+    <h3>Email: {{item.email}}</h3>
+    <h3>Role: {{item.role}}</h3>
+</div>
+ </div>
 </section>
 

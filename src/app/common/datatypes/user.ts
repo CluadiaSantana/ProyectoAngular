@@ -1,7 +1,7 @@
 export interface User {
     _id?: object,
-    rol: string,
-    username: string,
+    role: string,
+    userName: string,
     id: string,
     email: string
 }
