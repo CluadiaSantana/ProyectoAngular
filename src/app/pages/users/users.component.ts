@@ -8,8 +8,10 @@ import { User } from 'src/app/common/datatypes/user';
 })
 export class UsersComponent implements OnInit {
 
-  search: string="";
+  idSearch: string="";
   users: User[] = [];
+  isError: boolean = false;
+  isLoading: boolean = false;
   constructor(private userService: UserService) { }
   
 
@@ -18,9 +20,36 @@ export class UsersComponent implements OnInit {
     
       this.userService.getUsers("").then(response=>{
         this.users =response;
+        this.isError = false;
+        this.isLoading = false;
       }).catch(e=>{
         console.log('Error:  ', e);
+        this.isError = true;
+        this.isLoading = false;
       })
+  }
+
+  getUserId(){
+    if(!this.idSearch){
+      this.userService.getUsers("").then(response=>{
+        this.users =response;
+        this.isError = false;
+        this.isLoading = false;
+      }).catch(e=>{
+        console.log('Error:  ', e);
+        this.isError = true;
+        this.isLoading = false;
+      })
+      return;
+    }
+    let id :string=this.idSearch
+    this.userService.getUsers(id).then(response=>{
+      this.users = [];
+      this.users.push(response)
+    }).catch(e=>{
+      console.log('Error:  ', e);
+    })
+    this.idSearch="";
   }
 
 }

@@ -1,19 +1,18 @@
 <section class="buscador-usuarios">
-  <form >
-    <div >
-        <label for="searchbar"></label>
-        <input id="searchbar" class="form-control backbackPrimary" placeholder="SEARCH">
-        <button id="button-search">BUSCAR</button>
+  <form (submit)="getUserId()">
+      <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="User Id for search">
+      <button >BUSCAR</button>
+  </form>
+</section>
+<p *ngIf="isError" class="error">No se pudo obtener la lista</p>
+<section class="clearfix" *ngIf="!isError">
+  <div class="grid " id="data" *ngFor="let item of users">
+    <div class="data-item col-12 col-md-6 col-lg-3 ">
+      <h2>Usuario: {{item.userName}}</h2>
+      <h3>Email: {{item.email}}</h3>
+      <h3>Role: {{item.role}}</h3>
     </div>
-</form>
+  </div>
 </section>
-<section class="clearfix">
- <div class="grid " id="data" *ngFor="let item of users">
-  <div class="data-item col-12 col-md-6 col-lg-3 ">
-    <h2 >Usuario: {{item.userName}}</h2>
-    <h3>Email: {{item.email}}</h3>
-    <h3>Role: {{item.role}}</h3>
-</div>
- </div>
-</section>
-
+<p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="isLoading">Cargando...</p>

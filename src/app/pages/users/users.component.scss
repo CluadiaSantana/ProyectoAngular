@@ -15,7 +15,11 @@ button {
   margin-left: .5rem;
 }
 
-
+.form-control{
+  width: 100%;
+  height: 2rem;
+  border-radius: 10px;
+}
 
 @function getWidth($cols) {
     @return math.div($cols,$max-cols) * 95%;
@@ -34,7 +38,7 @@ button {
     }
 
     > .col-#{$max-cols} {
-        width: 100%;
+        width: 95%;
     }
 }
 
@@ -93,10 +97,22 @@ button {
 }
 .data-item{
     @extend .dataformat;
-    margin-left: 10px;
+    margin-left: 0.2%;
     margin-bottom: 20px;
     padding-bottom: 10px;
     padding-left: 5px;
     border-radius: 10px;
     border: solid 0.5px black;
+}
+
+button{
+  background-color: rgba(0, 0, 255, 0.788);
+  height: 2.3rem;
+  width: 100%;
+  color: $Primarycolor;
+  border-radius: 11px;
+  text-align:center;
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
 }

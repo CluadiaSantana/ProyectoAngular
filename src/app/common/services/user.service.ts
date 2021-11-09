@@ -23,7 +23,7 @@ export class UserService {
 
 
 
-  getUsers(data: any): Promise <any>{
+  getUsers(data:string): Promise <any>{
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken()
     });
@@ -33,7 +33,7 @@ export class UserService {
         headers: httpHeaders
       }).toPromise();
     }else{
-      return this.httpClient.get( environment.host + environment.apiPath + "/users",{
+      return this.httpClient.get( environment.host + environment.apiPath + "/users?id="+data,{
       headers: httpHeaders
     }).toPromise();
   }
