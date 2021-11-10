@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
 }
-
+ 
 header {
   background: #333;
   color: #eee;
@@ -25,7 +25,6 @@ label[for="abrir-cerrar"] {
   color: #fff;
   display: inline-block;
   width: 100%;
-
 }
 
 .cerrar {
@@ -36,16 +35,12 @@ label[for="abrir-cerrar"] {
   width: 0;
 }
 
-#contenido {
-  margin-left: 0;
-}
-
 input#abrir-cerrar:checked~#sidebar {
   width: 300px;
 }
 
 input#abrir-cerrar:checked+label[for="abrir-cerrar"],
-input#abrir-cerrar:checked~#contenido {
+input#abrir-cerrar:checked{
   margin-left: 300px;
   transition: margin-left .4s;
 }
