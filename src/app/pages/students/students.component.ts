@@ -29,7 +29,7 @@ export class StudentsComponent implements OnInit {
     })
 }
 
-getUserId(){
+getSudentId(){
   if(!this.idSearch){
     this.stundetService.getStudent("").then(response=>{
       this.students =response;

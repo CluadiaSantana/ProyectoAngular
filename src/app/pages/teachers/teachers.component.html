@@ -1,10 +1,18 @@
 <section class="buscador-maestros">
-    <div class="container">
-        <form action="">
-          <label id="id">Id:</label>
-          <input type="text" id="id">
-          <button>Buscar</button>
-        </form>
-      </div>
+  <form (submit)="getUserId()">
+      <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="Student Id for search">
+      <button >BUSCAR</button>
+  </form>
 </section>
-
+<p *ngIf="isError" class="error">No se pudo obtener la lista</p>
+<section class="clearfix" *ngIf="!isError">
+  <div class="grid " id="data" *ngFor="let item of teachers">
+    <div class="data-item col-12 col-md-6 col-lg-3 ">
+      <h2>Maestro: {{item.name}}</h2>
+      <h3>Fecha de inicio: {{item.hiringDate}}</h3>
+      <h3>Status: {{item.status}}</h3>
+    </div>
+  </div>
+</section>
+<p *ngIf="students.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="isLoading">Cargando...</p>
