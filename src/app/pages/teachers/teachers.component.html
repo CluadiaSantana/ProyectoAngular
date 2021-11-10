@@ -1,5 +1,5 @@
 <section class="buscador-maestros">
-  <form (submit)="getUserId()">
+  <form (submit)="getTeacherId()">
       <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="Student Id for search">
       <button >BUSCAR</button>
   </form>
@@ -14,5 +14,5 @@
     </div>
   </div>
 </section>
-<p *ngIf="students.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="teachers.length === 0 && !isError && !isLoading">La lista esta vacia</p>
 <p *ngIf="isLoading">Cargando...</p>
