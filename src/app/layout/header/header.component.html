@@ -12,15 +12,15 @@
         </ul>
       </nav>
     </div>
-    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+    <input [(ngModel)]="checked" type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
     <label for="abrir-cerrar">&#9776; <span class="abrir">Abrir</span><span class="cerrar">Cerrar</span></label>
     <div id="sidebar" class="sidebar">
         <ul class="menu">
-          <li><button routerLink="/users">Usuarios </button></li>
-          <li><button routerLink="/teachers">Maestros</button></li>
-          <li><button routerLink="/students">Alumnos</button></li>
-          <li><button routerLink="/classes">Clases</button></li>
-          <li><button hrouterLink="/records">Registros</button></li>
+          <li><button (click)="hideMenu()" routerLink="/users">Usuarios </button></li>
+          <li><button (click)="hideMenu()" routerLink="/teachers">Maestros</button></li>
+          <li><button (click)="hideMenu()" routerLink="/students">Alumnos</button></li>
+          <li><button (click)="hideMenu()" routerLink="/classes">Clases</button></li>
+          <li><button (click)="hideMenu()" routerLink="/records">Registros</button></li>
         </ul>
     </div>
   </header>
