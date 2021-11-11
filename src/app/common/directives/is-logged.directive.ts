@@ -10,7 +10,8 @@ export class IsLoggedDirective {
   @Input() appIsLogged: boolean =false;
   isLoggedIn: boolean = false;
 
-  constructor(private authentication: AuthenticationService, private elRef: ElementRef, private router: Router) { }
+  constructor(private authentication: AuthenticationService, private elRef: ElementRef, private router: Router) { 
+  }
 
 
 

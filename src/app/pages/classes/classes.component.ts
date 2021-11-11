@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Classes } from 'src/app/common/datatypes/classes';
+import { ClassService } from 'src/app/common/services/class.service';
 
 @Component({
   selector: 'app-classes',
@@ -7,10 +9,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassesComponent implements OnInit {
 
- 
-  constructor() { }
+  studentsId: string="";
+  teachersId: string="";
+  classes: Classes [] = [];
+  isError: boolean = false;
+  isLoading: boolean = false;
+  constructor(private classService: ClassService) { }
 
   ngOnInit(): void {
+    
+    this.classService.getClass("").then(response=>{
+      this.classes =response;
+      this.isError = false;
+      this.isLoading = false;
+    }).catch(e=>{
+      console.log('Error:  ', e);
+      this.isError = true;
+      this.isLoading = false;
+    })
+}
+
+getClass(){
+  if(!this.studentsId || !this.teachersId){
+    this.classService.getClass("").then(response=>{
+      this.classes =response;
+      this.isError = false;
+      this.isLoading = false;
+    }).catch(e=>{
+      console.log('Error:  ', e);
+      this.isError = true;
+      this.isLoading = false;
+    })
+    return;
   }
+  let ids :string=this.studentsId + "&teacherId=" +this.teachersId
+  this.classService.getClass(ids).then(response=>{
+    this.classes = [];
+    this.classes.push(response)
+    this.isError = false;
+    this.isLoading = false;
+  }).catch(e=>{
+    console.log('Error:  ', e);
+    this.isError = true;
+    this.isLoading = false;
+  })
+  this.studentsId="";
+  this.teachersId="";
+}
 
 }

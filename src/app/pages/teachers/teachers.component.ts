@@ -45,8 +45,12 @@ getTeacherId(){
   this.teachearService.getTeacher(id).then(response=>{
     this.teachers = [];
     this.teachers.push(response)
+    this.isError = false;
+    this.isLoading = false;
   }).catch(e=>{
     console.log('Error:  ', e);
+    this.isError = true;
+    this.isLoading = false;
   })
   this.idSearch="";
 }

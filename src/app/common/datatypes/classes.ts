@@ -1,7 +1,7 @@
 export interface Classes {
     year: number,
     numClasses: number,
-    studentid: number,
+    studentId: number,
     teacherId: number,
     weeklyHours: number
 }

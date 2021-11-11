@@ -46,8 +46,12 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers(id).then(response=>{
       this.users = [];
       this.users.push(response)
+      this.isError = false;
+      this.isLoading = false;
     }).catch(e=>{
       console.log('Error:  ', e);
+      this.isError = true;
+      this.isLoading = false;
     })
     this.idSearch="";
   }

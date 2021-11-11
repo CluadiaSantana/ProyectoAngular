@@ -1,11 +1,22 @@
-<section class="buscador-clases">
-  <div class="container">
-    <form action="">
-      <label id="id">Id_alumno:</label>
-      <input type="text" id="id">
-      <button>Buscar</button>
-      <label id="id">Id_maestro:</label>
-      <input type="text" id="id">
-    </form>
+<section class="buscador-students">
+  <form (submit)="getClass()">
+      <input name="studenstId" [(ngModel)]="studentsId" class="form-control backbackPrimary" placeholder="Student Id for search">
+      <input name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary" placeholder="Teacher Id for search">
+      <button >BUSCAR</button>
+  </form>
+</section>
+<section class="clearfix" *ngIf="!isError">
+  <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
+  <div class="grid " id="data" *ngFor="let item of classes">
+    <div class="data-item col-12 col-md-6 col-lg-3 ">
+      <h2>Alumno: {{item.studentId}}</h2>
+      <h3>Maestro: {{item.teacherId}}</h3>
+      <h3>Año: {{item.year}}</h3>
+      <h3>Numero de clases: {{item.numClasses}}</h3>
+      <h3>Clases a la semana: {{item.weeklyHours}}</h3>
+    </div>
   </div>
 </section>
+<p *ngIf="classes.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="isLoading">Cargando...</p>
+

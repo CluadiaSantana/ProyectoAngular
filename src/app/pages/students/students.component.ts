@@ -46,8 +46,12 @@ getStudentId(){
   this.stundetService.getStudent(id).then(response=>{
     this.students = [];
     this.students.push(response)
+    this.isError = false;
+    this.isLoading = false;
   }).catch(e=>{
     console.log('Error:  ', e);
+    this.isError = true;
+    this.isLoading = false;
   })
   this.idSearch="";
 }

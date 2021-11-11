@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthenticationService {
     localStorage.setItem('token',data.token);
     localStorage.setItem('rol',data.rol);
     localStorage.setItem('email',data.email);
+    
   }
 
   getUserId() : string {
