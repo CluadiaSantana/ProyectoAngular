@@ -10,11 +10,15 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 export class HeaderComponent implements OnInit {
 
   checked: boolean = false;
+  isLogged: boolean=false;
 
-  constructor(private authenticationService : AuthenticationService, private router: Router) { }
+  constructor(private authenticationService : AuthenticationService, private router: Router) { 
+    this.authenticationService.loginStatus.subscribe((status:boolean)=>{
+      this.isLogged=status;
+    });
+  }
 
   ngOnInit(): void {
-
   }
 
   hideMenu(): void{
