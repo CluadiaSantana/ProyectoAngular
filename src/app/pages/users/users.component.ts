@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   isError: boolean = false;
   isLoading: boolean = false;
+  noFound: boolean=false;
   constructor(private userService: UserService) { }
   
 
@@ -50,8 +51,9 @@ export class UsersComponent implements OnInit {
       this.isLoading = false;
     }).catch(e=>{
       console.log('Error:  ', e);
-      this.isError = true;
+      this.isError = false;
       this.isLoading = false;
+      this.users=[];
     })
     this.idSearch="";
   }

@@ -50,8 +50,9 @@ getStudentId(){
     this.isLoading = false;
   }).catch(e=>{
     console.log('Error:  ', e);
-    this.isError = true;
+    this.isError = false;
     this.isLoading = false;
+    this.students=[];
   })
   this.idSearch="";
 }

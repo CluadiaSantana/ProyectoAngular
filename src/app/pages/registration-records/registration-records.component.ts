@@ -30,7 +30,7 @@ export class RegistrationRecordsComponent implements OnInit {
     })
 }
 
-getClass(){
+getRecords(){
   if(!this.studentsId || !this.teachersId){
     this.recordService.getRecords("").then(response=>{
       this.records =response;
@@ -50,8 +50,9 @@ getClass(){
     this.isLoading = false;
   }).catch(e=>{
     console.log('Error:  ', e);
-    this.isError = true;
+    this.isError = false;
     this.isLoading = false;
+    this.records=[];
   })
   this.studentsId="";
   this.teachersId="";

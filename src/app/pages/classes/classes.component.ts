@@ -44,14 +44,14 @@ getClass(){
   }
   let ids :string=this.studentsId + "&teacherId=" +this.teachersId
   this.classService.getClass(ids).then(response=>{
-    this.classes = [];
-    this.classes.push(response)
+    this.classes = response;
     this.isError = false;
     this.isLoading = false;
   }).catch(e=>{
     console.log('Error:  ', e);
-    this.isError = true;
+    this.isError = false;
     this.isLoading = false;
+    this.classes=[];
   })
   this.studentsId="";
   this.teachersId="";

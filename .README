@@ -1,0 +1,25 @@
+para el funcionamiento se debe tener en la carpeta enviroment
+  production: false,
+  host: "http://localhost:3001",
+  apiPath: "/api",
+  authPath: "/auth
+debe correerse junto con la api (existe una nueva version en la cual se solucionarion pequeños detalles )
+
+
+Para poder ingresar se debe poner un usuario y contraseña en login 
+
+usuario:  Admin@test.com
+Contraseña: Hola123Hola
+
+Para comprobar la busqueda aqui estan algunos usuarios que se pueden buscar
+userId gk5hey8f2
+teacherId lsn06z589
+studentId gk5hey8f2
+para checar registros:
+teacherId lsn06z589
+studentId gk5hey8f2
+para checar clase
+studentId gk5hey8f2
+TreacerId lsn06z589
+
+Queda pendiente para la siguiente entrega el contorl de botonoes y las autorizaciones con guardias
