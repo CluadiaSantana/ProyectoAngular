@@ -16,6 +16,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import { GoogleLoginProvider} from 'angularx-social-login';
 import { DemoComponent } from './demo/demo.component';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DemoComponent } from './demo/demo.component';
     FooterComponent,
     LoginComponent,
     SignInComponent,
-    DemoComponent
+    DemoComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,
