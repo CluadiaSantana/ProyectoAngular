@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignService } from 'src/app/common/services/sign.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,22 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  email: string="";
-  password: string="";
-  name: string="";
-  rol: string="student";
+  form: FormGroup;
 
-  constructor(private signService: SignService, private router: Router) { }
+  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder ) {
+    this.form= this.formBuilder.group({
+      userName: [' ',Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+      email: [' ',Validators.required, Validators.email],
+      password: [' ',Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
+      confirm: [' ',Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
+      role: 'student'
+    })
+   }
+
+
 
   sign(){
-    this.signService.sign({
-      email: this.email,
-      password: this.password,
-      name: this.name,
-      rol: this.rol
-    }).then((response)=>{
-      this.router.navigate(['/login']);
-    })
+    if(this.form.valid){
+
+    }else{
+      
+    }
   }
 
 
