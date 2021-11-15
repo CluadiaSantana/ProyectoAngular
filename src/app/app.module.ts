@@ -14,8 +14,8 @@ import { RegistrationRecordsComponent } from './pages/registration-records/regis
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignInComponent,
-    SignupComponent
+    SignupComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

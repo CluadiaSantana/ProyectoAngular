@@ -11,10 +11,14 @@ export class HeaderComponent implements OnInit {
 
   checked: boolean = false;
   isLogged: boolean=false;
+  role:boolean=false;
 
   constructor(private authenticationService : AuthenticationService, private router: Router) { 
     this.authenticationService.loginStatus.subscribe((status:boolean)=>{
       this.isLogged=status;
+    });
+    this.authenticationService.roleStatus.subscribe((status:boolean)=>{
+      this.role=status;
     });
   }
 

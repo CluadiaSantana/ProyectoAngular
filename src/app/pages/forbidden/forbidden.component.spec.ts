@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignInComponent } from './sign-in.component';
+import { ForbiddenComponent } from './forbidden.component';
 
-describe('SignInComponent', () => {
-  let component: SignInComponent;
-  let fixture: ComponentFixture<SignInComponent>;
+describe('ForbiddenComponent', () => {
+  let component: ForbiddenComponent;
+  let fixture: ComponentFixture<ForbiddenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignInComponent ]
+      declarations: [ ForbiddenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignInComponent);
+    fixture = TestBed.createComponent(ForbiddenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

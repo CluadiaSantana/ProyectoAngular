@@ -6,9 +6,9 @@
           <button type="button" class="button-login"
             aria-expanded="false" routerLink="/login"  *ngIf="!isLogged">LOGIN</button>
           <button type="button" class="button-sign-in" 
-            aria-expanded="false" routerLink="/sign"   *ngIf="!isLogged">SIGN IN</button>
+            aria-expanded="false" routerLink="/signup"   *ngIf="!isLogged">SIGN UP</button>
           <button type="button" class="button-logout" 
-            aria-expanded="false" *ngIf="isLogged" (click)="logOut()" >LOGOUT</button>
+            aria-expanded="false" *ngIf="isLogged" (click)="logOut()" routerLink="/login">LOGOUT</button>
         </ul>
       </nav>
     </div>
@@ -16,11 +16,11 @@
     <label for="abrir-cerrar">&#9776; <span class="abrir">Abrir</span><span class="cerrar">Cerrar</span></label>
     <div id="sidebar" class="sidebar">
         <ul class="menu">
-          <li><button (click)="hideMenu()" routerLink="/users">Usuarios </button></li>
-          <li><button (click)="hideMenu()" routerLink="/teachers">Maestros</button></li>
-          <li><button (click)="hideMenu()" routerLink="/students">Alumnos</button></li>
-          <li><button (click)="hideMenu()" routerLink="/classes">Clases</button></li>
-          <li><button (click)="hideMenu()" routerLink="/records">Registros</button></li>
+          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/users" class='but'>Usuarios </button></li>
+          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/teachers" class='but'>Maestros</button></li>
+          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/students" class='but'>Alumnos</button></li>
+          <li><button (click)="hideMenu()" *ngIf="role"routerLink="/classes" class='but'>Clases</button></li>
+          <li><button (click)="hideMenu()"*ngIf="role" routerLink="/records" class='but'>Registros</button></li>
         </ul>
     </div>
   </header>

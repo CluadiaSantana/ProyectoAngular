@@ -1,7 +1,7 @@
 <section class="buscador-usuarios">
   <form (submit)="getUserId()">
       <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="User Id for search">
-      <button class="search">BUSCAR</button>
+      <button class="search but">BUSCAR</button>
   </form>
 </section>
 <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
