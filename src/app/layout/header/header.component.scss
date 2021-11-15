@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
 }
- 
+
 header {
   background: #333;
   color: #eee;
@@ -39,7 +39,7 @@ input#abrir-cerrar:checked~#sidebar {
 }
 
 input#abrir-cerrar:checked+label[for="abrir-cerrar"],
-input#abrir-cerrar:checked{
+input#abrir-cerrar:checked {
   margin-left: 300px;
   transition: margin-left .4s;
 }
@@ -153,4 +153,3 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
