@@ -2,14 +2,16 @@
 <p>
     --{{form.valid}}--
 </p>
-<form [formGroup]="form"> 
+<form [formGroup]="form" (submit)="sign()"> 
     <div>   
         <label for="userName">Nombre: </label>
         <input type="text" name="userName" formControlName="userName">
+        <p *ngIf="!nameError">  Ingresa nombre valido </p>
     </div>
     <div>   
         <label for="email">Email: </label>
         <input type="email" name="email" formControlName="email">
+        <p *ngIf="!emailError">  Ingresa email valido </p>
     </div>
     <div>   
         <label for="password">Password: </label>
@@ -18,10 +20,10 @@
     <div>   
         <label for="confirm">Confirmar password: </label>
         <input type="password" name="confirm" formControlName="confirm">
+        <p *ngIf="!confirmError">  Deben coincidir los passwords </p>
+        <p *ngIf="!passwordError">  El password debe contener 8 caraccteres mayusculas minusculas y caracteres especiales </p>
     </div>
     <div>   
         <button>Signup</button>
     </div>    
 </form>
-
-

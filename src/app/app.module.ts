@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -17,6 +19,7 @@ import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login
 import { GoogleLoginProvider} from 'angularx-social-login';
 import { DemoComponent } from './demo/demo.component';
 import { VerificationComponent } from './verification/verification.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { VerificationComponent } from './verification/verification.component';
     SignInComponent,
     DemoComponent,
     VerificationComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { VerificationComponent } from './verification/verification.component';
     FormsModule,
     HttpClientModule,
     SocialLoginModule
+    ReactiveFormsModule
   ],
 
   providers: [{
