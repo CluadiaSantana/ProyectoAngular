@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -18,9 +18,12 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import { GoogleLoginProvider} from 'angularx-social-login';
 import { DemoComponent } from './demo/demo.component';
+<<<<<<< Updated upstream
 import { VerificationComponent } from './verification/verification.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+=======
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -37,8 +40,7 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     ForbiddenComponent
     SignInComponent,
     DemoComponent,
-    VerificationComponent
-    SignupComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,6 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     FormsModule,
     HttpClientModule,
     SocialLoginModule
-    ReactiveFormsModule
   ],
 
   providers: [{
