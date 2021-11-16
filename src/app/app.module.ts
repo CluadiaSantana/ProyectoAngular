@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -14,16 +12,12 @@ import { RegistrationRecordsComponent } from './pages/registration-records/regis
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import { GoogleLoginProvider} from 'angularx-social-login';
 import { DemoComponent } from './demo/demo.component';
-<<<<<<< Updated upstream
-import { VerificationComponent } from './verification/verification.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
-=======
->>>>>>> Stashed changes
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +31,9 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    ForbiddenComponent
-    SignInComponent,
+    ForbiddenComponent,
     DemoComponent,
+    SignInComponent
 
   ],
   imports: [
@@ -47,7 +41,8 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    ReactiveFormsModule
   ],
 
   providers: [{
