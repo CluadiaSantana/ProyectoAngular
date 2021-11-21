@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -14,8 +12,15 @@ import { RegistrationRecordsComponent } from './pages/registration-records/regis
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import { GoogleLoginProvider} from 'angularx-social-login';
+import { DemoComponent } from './demo/demo.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { RouterModule } from '@angular/router';
+import { AuthGuardService } from './common/services/auth-guard-service.service';
 
 @NgModule({
   declarations: [
@@ -29,16 +34,41 @@ import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    DemoComponent,
+    SignInComponent,
+    MainpageComponent
+
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      {path: 'login', component: LoginComponent},
+      {path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuardService]},
+      {path: '**', component: LoginComponent}
+    ]),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+ 
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false, //keeps the user signed in
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('959886331117-k83jcgut24jgeonjlhfqo1vfflcmjale.apps.googleusercontent.com') //Client id
+        }
+      ]
+    }
+  },
+  SocialLoginModule,
+  ReactiveFormsModule,
+  AuthGuardService],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
