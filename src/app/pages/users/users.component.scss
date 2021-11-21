@@ -1,0 +1,33 @@
+.user{
+    border:1px solid;
+    border-color:lightgrey; 
+    border-radius: 10px; 
+    margin-left: 15px;
+    padding: 0mm;
+    margin-top: 15px;
+}
+
+.image{
+    width:150px;
+    height:150px;
+    border-radius:70%;
+    border:1px solid rgb(53, 53, 53);
+    margin:1px;
+}
+
+.inh{
+    width:inherit;
+}
+.left{
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.right{
+    float: right;
+    background:red
+}
+.center{
+    display:inline-block;
+    margin-left: 15px;
+}

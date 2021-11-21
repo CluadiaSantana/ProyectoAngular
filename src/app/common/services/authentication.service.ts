@@ -16,6 +16,7 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
     localStorage.setItem('token',data.token);
     localStorage.setItem('role',data.role);
     localStorage.setItem('email',data.email);
+    localStorage.setItem('userName',data.userName);
     this.loginStatus.next(true);
     this.roleStatus.next(this.rolePermition());
   }
@@ -30,6 +31,10 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
 
   getRole() :string {
     return localStorage.getItem('role') || '';
+  }
+
+  getUserName():string {
+    return localStorage.getItem('userName') || '';
   }
 
   isLoggedIn(): boolean{

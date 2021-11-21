@@ -51,9 +51,9 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SocialLoginModule,
     ReactiveFormsModule
   ],
+ 
   providers: [{
     provide: 'SocialAuthServiceConfig',
     useValue: {
@@ -66,8 +66,10 @@ import { environment } from 'src/environments/environment';
       ]
     }
   },
+  SocialLoginModule,
+  ReactiveFormsModule,
   AuthGuardService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
-
 export class AppModule { }
