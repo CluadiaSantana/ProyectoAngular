@@ -14,3 +14,4 @@ export class LoginService {
     return this.httpClient.post( environment.host + environment.authPath + "/users/login", data).toPromise();
   }
 }
+ 

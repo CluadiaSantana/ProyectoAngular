@@ -11,7 +11,7 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
   constructor() {
     this.loginStatus.next(this.isLoggedIn());
    }
-
+ 
   saveToken(data : any){
     localStorage.setItem('token',data.token);
     localStorage.setItem('role',data.role);

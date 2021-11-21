@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   host: "http://localhost:3001",
   apiPath: "/api",
-  authPath: "/auth"
+  authPath: "/auth",
+  GoogleProvider: "959886331117-k83jcgut24jgeonjlhfqo1vfflcmjale.apps.googleusercontent.com"
 };
 
 /*

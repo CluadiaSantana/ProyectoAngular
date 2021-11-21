@@ -14,13 +14,14 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 import { GoogleLoginProvider} from 'angularx-social-login';
-import { DemoComponent } from './demo/demo.component';
+import { DemoComponent } from './pages/demo/demo.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './common/services/auth-guard-service.service';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { AuthGuardService } from './common/services/auth-guard-service.service';
       providers: [
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('959886331117-k83jcgut24jgeonjlhfqo1vfflcmjale.apps.googleusercontent.com') //Client id
+          provider: new GoogleLoginProvider(environment.GoogleProvider) //Client id
         }
       ]
     }
