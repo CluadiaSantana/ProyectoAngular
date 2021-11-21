@@ -5,7 +5,7 @@
 <form [formGroup]="form" (submit)="sign()" class="center-block"> 
     <div class="center-block" >   
         <label for="userName">Nombre: </label>
-        <input type="text" name="userName" formControlName="userName">
+        <input type="text" name="userName" formControlName="userName" >
         <p *ngIf="!nameError">  Ingresa nombre valido </p>
     </div>
     <div>   
@@ -27,3 +27,12 @@
         <button>Signup</button>
     </div>    
 </form>
+<form>      
+    <div>
+      <input type="file" name="image" (change)="selectImage($event)" />
+    </div>
+    <br>
+    <div>
+      <button type="submit" (click)="onSubmit()">Upload</button>
+    </div>
+  </form>

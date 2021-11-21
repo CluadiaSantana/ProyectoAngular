@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignService } from 'src/app/common/services/sign.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -14,8 +15,10 @@ export class SignupComponent implements OnInit {
   nameError: boolean=true;
   passwordError: boolean=true;
   confirmError: boolean=true;
+  title = 'fileUpload';
+  images: any;
 
-  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder ) {
+  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
     this.form= this.formBuilder.group({
       userName: ['',Validators.compose( 
         [Validators.required, Validators.pattern('[a-zA-Z\s ]+')]
@@ -63,4 +66,20 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  selectImage(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.images = file;
+    }
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.images);
+
+    this.http.post<any>('http://localhost:3001/file', formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
 }

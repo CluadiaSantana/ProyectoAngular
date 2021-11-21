@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/common/services/user.service';
 import { User } from 'src/app/common/datatypes/user';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -13,7 +14,7 @@ export class UsersComponent implements OnInit {
   isError: boolean = false;
   isLoading: boolean = false;
   noFound: boolean=false;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private authenticationService : AuthenticationService) { }
   
 
 
@@ -57,5 +58,9 @@ export class UsersComponent implements OnInit {
     })
     this.idSearch="";
   }
-
+  delete(id : String, userName :String):boolean{
+    console.log("Se borro el usurio"+ " " + id);
+    console.log(userName);
+    return true;
+  }
 }
