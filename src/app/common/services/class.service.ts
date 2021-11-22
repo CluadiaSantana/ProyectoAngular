@@ -25,7 +25,23 @@ export class ClassService {
     }).toPromise();
   }
     };
+  
+    postClass(data: any){
+      const httpHeaders = new HttpHeaders({
+        'x-auth': this.authenticationService.getToken()
+      });
+      return this.httpClient.post( environment.host + environment.apiPath + "/classes", data,{
+        headers: httpHeaders
+      }).toPromise();
+    }
 
+    putClass(teacherId: string,studentId: string,data: any){
+      const httpHeaders = new HttpHeaders({
+        'x-auth': this.authenticationService.getToken()
+      });
+      return this.httpClient.put( environment.host + environment.apiPath + "/classes?teacherId=" + teacherId+"&stuedentId="+studentId, data,{
+        headers: httpHeaders
+      }).toPromise();
+    }
+    }
 
-
-}
