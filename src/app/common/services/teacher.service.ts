@@ -6,26 +6,75 @@ import { AuthenticationService } from './authentication.service';
 import { environment } from './../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeacherService {
+  constructor(
+    private httpClient: HttpClient,
+    private authenticationService: AuthenticationService
+  ) {}
 
-  constructor(private httpClient: HttpClient, private authenticationService: AuthenticationService) { }
-  
-  getTeacher(data: string): Promise <any>{
+  getTeacher(data: string): Promise<any> {
     const httpHeaders = new HttpHeaders({
-      'x-auth': this.authenticationService.getToken()
+      'x-auth': this.authenticationService.getToken(),
     });
-    if(data==""){
+    if (data == '') {
       //console.log(this.authenticationService.getToken())
-      return this.httpClient.get( environment.host + environment.authPath + "/teachers" ,{
-        headers: httpHeaders
-      }).toPromise();
-    }else{
-      return this.httpClient.get( environment.host + environment.apiPath + "/teachers?id="+data,{
-      headers: httpHeaders
-    }).toPromise();
+      return this.httpClient
+        .get(environment.host + environment.authPath + '/teachers', {
+          headers: httpHeaders,
+        })
+        .toPromise();
+    } else {
+      return this.httpClient
+        .get(environment.host + environment.apiPath + '/teachers?id=' + data, {
+          headers: httpHeaders,
+        })
+        .toPromise();
+    }
   }
-    };
 
+  postTeacher(data: any) {
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken(),
+    });
+    return this.httpClient
+      .post(environment.host + environment.apiPath + '/teachers', data, {
+        headers: httpHeaders,
+      })
+      .toPromise();
+  }
+
+  putTeacher(teacherId: string, data: any) {
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken(),
+    });
+    return this.httpClient
+      .put(
+        environment.host +
+          environment.apiPath +
+          '/classes?teacherId=' +
+          teacherId,
+        data,
+        {
+          headers: httpHeaders,
+        }
+      )
+      .toPromise();
+  }
+
+  deleteTeacher(teacherId: string, data: any) {
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken(),
+    });
+    return this.httpClient
+      .delete(
+        environment.host +
+          environment.apiPath +
+          '/classes?teacherId=' +
+          teacherId,
+        data
+      )
+      .toPromise();
+  }
 }
