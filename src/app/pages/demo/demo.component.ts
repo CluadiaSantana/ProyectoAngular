@@ -15,7 +15,7 @@ export class DemoComponent implements OnInit {
   email: string=""; 
   name: string="";
   googleId: string="";
-  token: string="";
+  idToken: string="";
 
 
   constructor(private router: Router, private authenticationService : AuthenticationService,
@@ -28,13 +28,14 @@ export class DemoComponent implements OnInit {
         this.email = response.email,
         this.name = response.name,
         this.googleId = response.id,
-        this.token = response.idToken
+        this.idToken = response.idToken
         console.log(this.email);
 
         this.googleService.login({
           email: this.email,
           userName: this.name,
-          googleId: this.googleId
+          googleId: this.googleId,
+          idToken: this.idToken
 
         }).then(response=>{
           this.authenticationService.saveToken(response);
