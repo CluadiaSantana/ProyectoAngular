@@ -1,7 +1,7 @@
-<section class="buscador-students">
+<section *ngIf="!roleStudent" class="buscador-students">
   <form (submit)="getClass()">
       <input name="studenstId" [(ngModel)]="studentsId" class="form-control backbackPrimary" placeholder="Student Id for search">
-      <input name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary" placeholder="Teacher Id for search">
+      <input  *ngIf="roleAdmin" name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary" placeholder="Teacher Id for search">
       <button class='but' >BUSCAR</button>
   </form>
 </section>

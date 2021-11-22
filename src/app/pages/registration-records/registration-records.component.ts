@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Record } from 'src/app/common/datatypes/record';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { RecordService } from 'src/app/common/services/record.service';
 
 
@@ -12,10 +13,20 @@ export class RegistrationRecordsComponent implements OnInit {
 
   studentsId: string="";
   teachersId: string="";
+  ids: string="";
   records: Record [] = [];
   isError: boolean = false;
   isLoading: boolean = false;
-  constructor(private recordService: RecordService) { }
+  roleAdmin:boolean=false;
+  roleStudent:boolean=false;
+  constructor(private recordService: RecordService, private authenticationService : AuthenticationService) {
+    this.authenticationService.roleAdminStatus.subscribe((status:boolean)=>{
+      this.roleAdmin=status;
+    });
+    this.authenticationService.roleStudentStatus.subscribe((status:boolean)=>{
+      this.roleStudent=status;
+    });
+   }
 
   ngOnInit(): void {
     
@@ -31,7 +42,7 @@ export class RegistrationRecordsComponent implements OnInit {
 }
 
 getRecords(){
-  if(!this.studentsId || !this.teachersId){
+  if(!this.studentsId){
     this.recordService.getRecords("").then(response=>{
       this.records =response;
       this.isError = false;
@@ -43,9 +54,13 @@ getRecords(){
     })
     return;
   }
-  let ids :string=this.studentsId + "&teacherId=" +this.teachersId
-  this.recordService.getRecords(ids).then(response=>{
-    this.records =response;
+  if(this.roleAdmin){
+    this.ids =this.studentsId + "&teacherId=" +this.teachersId
+  }else{
+    this.ids=this.studentsId
+  }
+  this.recordService.getRecords(this.ids).then(response=>{
+    this.records = response;
     this.isError = false;
     this.isLoading = false;
   }).catch(e=>{

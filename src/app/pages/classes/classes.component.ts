@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Classes } from 'src/app/common/datatypes/classes';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { ClassService } from 'src/app/common/services/class.service';
 
 @Component({
@@ -11,10 +12,20 @@ export class ClassesComponent implements OnInit {
 
   studentsId: string="";
   teachersId: string="";
+  ids: string="";
   classes: Classes [] = [];
   isError: boolean = false;
   isLoading: boolean = false;
-  constructor(private classService: ClassService) { }
+  roleStudent:boolean=false;
+  roleAdmin:boolean=false;
+  constructor(private classService: ClassService, private authenticationService : AuthenticationService) {
+    this.authenticationService.roleStudentStatus.subscribe((status:boolean)=>{
+      this.roleStudent=status;
+    });
+    this.authenticationService.roleAdminStatus.subscribe((status:boolean)=>{
+      this.roleAdmin=status;
+    });
+   }
 
   ngOnInit(): void {
     
@@ -30,7 +41,7 @@ export class ClassesComponent implements OnInit {
 }
 
 getClass(){
-  if(!this.studentsId || !this.teachersId){
+  if(!this.studentsId){
     this.classService.getClass("").then(response=>{
       this.classes =response;
       this.isError = false;
@@ -42,8 +53,12 @@ getClass(){
     })
     return;
   }
-  let ids :string=this.studentsId + "&teacherId=" +this.teachersId
-  this.classService.getClass(ids).then(response=>{
+  if(this.roleAdmin){
+    this.ids =this.studentsId + "&teacherId=" +this.teachersId
+  }else{
+    this.ids=this.studentsId
+  }
+  this.classService.getClass(this.ids).then(response=>{
     this.classes = response;
     this.isError = false;
     this.isLoading = false;

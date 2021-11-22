@@ -1,5 +1,5 @@
 export interface Teacher {
-    name: string,
+    userName: string,
     id: string,
     hiringDate: string,
     students: Array<number>,

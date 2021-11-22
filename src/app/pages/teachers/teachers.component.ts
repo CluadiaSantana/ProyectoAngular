@@ -13,7 +13,11 @@ export class TeachersComponent implements OnInit {
   teachers: Teacher [] = [];
   isError: boolean = false;
   isLoading: boolean = false;
-  constructor(private teachearService: TeacherService) { }
+  roleAdmin:boolean=false;
+  roleStudent:boolean=false;
+  constructor(private teachearService: TeacherService) { 
+
+  }
 
   ngOnInit(): void {
     
