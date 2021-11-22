@@ -7,7 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthenticationService {
 
 loginStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
-roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
+roleAdminStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
+roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
   constructor() {
     this.loginStatus.next(this.isLoggedIn());
    }
@@ -18,7 +19,8 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
     localStorage.setItem('email',data.email);
     localStorage.setItem('userName',data.userName);
     this.loginStatus.next(true);
-    this.roleStatus.next(this.rolePermition());
+    this.roleAdminStatus.next(this.rolePermition("Admin"));
+    this.roleStudentStatus.next(this.rolePermition("student"));
   }
 
   getUserId() : string {
@@ -41,8 +43,8 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
     return !!localStorage.getItem('token');
   }
 
-  rolePermition(): boolean{
-    if(localStorage.getItem('role')=='Admin' || localStorage.getItem('role')=='teacher'){
+  rolePermition(role : String): boolean{
+    if(localStorage.getItem('role')==role){
       return(true);
     }else{
       return(false);
@@ -53,8 +55,10 @@ roleStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('email');
+    localStorage.removeItem('userName');
     this.loginStatus.next(false);
-    this.roleStatus.next(false);
+    this.roleAdminStatus.next(false);
+    this.roleStudentStatus.next(false);
   }
 
 }

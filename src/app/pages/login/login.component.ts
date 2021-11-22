@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }).then((response)=>{
       this.authenticationService.saveToken(response);
-      this.router.navigate(['/users']);
+      this.router.navigate(['/classes']);
     }). catch();
   }
 

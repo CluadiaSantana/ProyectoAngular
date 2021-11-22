@@ -16,11 +16,11 @@
     <label for="abrir-cerrar">&#9776; <span class="abrir">Abrir</span><span class="cerrar">Cerrar</span></label>
     <div id="sidebar" class="sidebar">
         <ul class="menu">
-          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/users" class='but'>Usuarios </button></li>
-          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/teachers" class='but'>Maestros</button></li>
-          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/students" class='but'>Alumnos</button></li>
-          <li><button (click)="hideMenu()" *ngIf="role"routerLink="/classes" class='but'>Clases</button></li>
-          <li><button (click)="hideMenu()"*ngIf="role" routerLink="/records" class='but'>Registros</button></li>
+          <li><button (click)="hideMenu()" *ngIf="roleAdmin" routerLink="/users" class='but'>Usuarios </button></li>
+          <li><button (click)="hideMenu()" *ngIf="roleAdmin" routerLink="/teachers" class='but'>Maestros</button></li>
+          <li><button (click)="hideMenu()" *ngIf="!roleStudent" routerLink="/students" class='but'>Alumnos</button></li>
+          <li><button (click)="hideMenu()" *ngIf="isLogged"routerLink="/classes" class='but'>Clases</button></li>
+          <li><button (click)="hideMenu()" *ngIf="isLogged" routerLink="/records" class='but'>Registros</button></li>
         </ul>
     </div>
   </header>

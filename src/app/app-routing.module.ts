@@ -18,21 +18,25 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: {
     status: false
   }},
-  {path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: {
-    status: true
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuard,RoleGuard], data: {
+    status: true,
+    role: 'Admin',
+    role1: 'Admin'
   }},
-  {path: 'students', component: StudentsComponent, canActivate: [AuthGuard], data: {
-    status: true
-  }},
-  {path: 'teachers', component: TeachersComponent, canActivate: [AuthGuard], data: {
-    status: true
-  }},
-  {path: 'classes', component: ClassesComponent, canActivate: [AuthGuard, RoleGuard], data: {
+  {path: 'students', component: StudentsComponent, canActivate: [AuthGuard, RoleGuard], data: {
     status: true,
     role: 'Admin',
     role1: 'teacher'
   }},
-  {path: 'records', component: RegistrationRecordsComponent, canActivate: [AuthGuard, RoleGuard], data: {
+  {path: 'teachers', component: TeachersComponent, canActivate: [AuthGuard], data: {
+    status: true
+  }},
+  {path: 'classes', component: ClassesComponent, canActivate: [AuthGuard], data: {
+    status: true,
+    role: 'Admin',
+    role1: 'teacher'
+  }},
+  {path: 'records', component: RegistrationRecordsComponent, canActivate: [AuthGuard], data: {
     status: true,
     role: 'Admin',
     role1: 'teacher'
