@@ -21,13 +21,13 @@ export class TeacherService {
     if (data == '') {
       //console.log(this.authenticationService.getToken())
       return this.httpClient
-        .get(environment.host + environment.authPath + '/teachers', {
+        .get(environment.host + environment.apiPath + '/teachers', {
           headers: httpHeaders,
         })
         .toPromise();
     } else {
       return this.httpClient
-        .get(environment.host + environment.apiPath + '/teachers?id=' + data, {
+        .get(environment.host + environment.apiPath + '/teachers?userName=' + data, {
           headers: httpHeaders,
         })
         .toPromise();

@@ -39,6 +39,10 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     return localStorage.getItem('userName') || '';
   }
 
+  getEmail():string{
+    return localStorage.getItem('email') || '';
+  }
+
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token');
   }

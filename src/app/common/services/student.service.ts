@@ -28,7 +28,7 @@ export class StudentService {
         .toPromise();
     } else {
       return this.httpClient
-        .get(environment.host + environment.apiPath + '/students?id=' + data, {
+        .get(environment.host + environment.apiPath + '/students?userName=' + data, {
           headers: httpHeaders,
         })
         .toPromise();

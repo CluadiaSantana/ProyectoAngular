@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/common/services/user.service';
 import { User } from 'src/app/common/datatypes/user';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { DataService } from 'src/app/common/services/data.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -14,7 +15,7 @@ export class UsersComponent implements OnInit {
   isError: boolean = false;
   isLoading: boolean = false;
   noFound: boolean=false;
-  constructor(private userService: UserService, private authenticationService : AuthenticationService) { }
+  constructor(private userService: UserService, private authenticationService : AuthenticationService, private dataService: DataService) { }
   
  
 
@@ -29,6 +30,13 @@ export class UsersComponent implements OnInit {
         this.isError = true;
         this.isLoading = false;
       })
+  }
+
+   getImage(photoName : string) {
+    this.dataService.getImage(photoName).then(res=>{
+      return res;
+    })
+
   }
 
   getUserId(){

@@ -6,6 +6,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ClassesComponent } from './pages/classes/classes.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { RegistrationRecordsComponent } from './pages/registration-records/registration-records.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -33,18 +34,17 @@ const routes: Routes = [
   }},
   {path: 'classes', component: ClassesComponent, canActivate: [AuthGuard], data: {
     status: true,
-    role: 'Admin',
-    role1: 'teacher'
   }},
   {path: 'records', component: RegistrationRecordsComponent, canActivate: [AuthGuard], data: {
     status: true,
-    role: 'Admin',
-    role1: 'teacher'
   }},
   {path: 'signup', component: SignupComponent,canActivate: [AuthGuard], data: {
     status: false
   }},
-  {path: 'forbidden', component: ForbiddenComponent}
+  {path: 'forbidden', component: ForbiddenComponent},
+  {path: 'myprofile', component: MyprofileComponent,canActivate: [AuthGuard], data: {
+    status: true,
+  }}
 ];
 
 @NgModule({

@@ -44,8 +44,7 @@ getStudentId(){
   }
   let id :string=this.idSearch
   this.stundetService.getStudent(id).then(response=>{
-    this.students = [];
-    this.students.push(response)
+    this.students = response;
     this.isError = false;
     this.isLoading = false;
   }).catch(e=>{
