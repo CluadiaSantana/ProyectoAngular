@@ -21,7 +21,7 @@ export class TeacherService {
     if (data == '') {
       //console.log(this.authenticationService.getToken())
       return this.httpClient
-        .get(environment.host + environment.authPath + '/teachers', {
+        .get(environment.host + environment.apiPath + '/teachers', {
           headers: httpHeaders,
         })
         .toPromise();
