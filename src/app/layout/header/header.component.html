@@ -9,9 +9,12 @@
             aria-expanded="false" routerLink="/signup"   *ngIf="!isLogged">SIGN UP</button>
           <button type="button" class="button-logout" 
             aria-expanded="false" *ngIf="isLogged" (click)="logOut()" routerLink="/login">LOGOUT</button>
+          <button type="button" class="button-myprofile" 
+          aria-expanded="false" *ngIf="isLogged" routerLink="/myprofile" >MyProfile</button>
         </ul>
       </nav>
     </div>
+    <button (click)="loginWithGoogle()" *ngIf="!isLogged">Login with Google</button>
     <input [(ngModel)]="checked" type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
     <label for="abrir-cerrar">&#9776; <span class="abrir">Abrir</span><span class="cerrar">Cerrar</span></label>
     <div id="sidebar" class="sidebar">

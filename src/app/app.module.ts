@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -17,10 +18,9 @@ import { GoogleLoginProvider} from 'angularx-social-login';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './common/services/auth-guard-service.service';
-import { DemoComponent } from './pages/demo/demo.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 @NgModule({
   declarations: [
@@ -35,16 +35,14 @@ import { DemoComponent } from './pages/demo/demo.component';
     LoginComponent,
     SignupComponent,
     ForbiddenComponent,
-    DemoComponent,
     SignInComponent,
-    MainpageComponent
+    MyprofileComponent
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: 'mainpage', component: MainpageComponent, canActivate: [AuthGuardService]},
       {path: '**', component: LoginComponent}
     ]),
     AppRoutingModule,
