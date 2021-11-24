@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { DataService } from 'src/app/common/services/data.service';
 
 @Component({
   selector: 'app-myprofile',
@@ -13,7 +15,7 @@ export class MyprofileComponent implements OnInit {
   image: any;
   change: boolean=false;
 
-  constructor(private authentication: AuthenticationService) { }
+  constructor(private authentication: AuthenticationService, private data: DataService, private router: Router) { }
 
   
   ngOnInit(): void {
@@ -23,15 +25,22 @@ export class MyprofileComponent implements OnInit {
   }
 
   selectImage(event:any){
-    if(event.target.vale){
-      this.image= <File>event.target.files[0]
+    console.log("hola1")
+    if(event.target.value){
+      console.log("hola2")
+      const file = event.target.files[0];
+      this.image = file;
     }
   }
 
   submitPhoto():any{
     let fd= new FormData();
     if(this.image){
-      fd.append('profileImage',this.image,this.authentication.getUserId());
+      console.log("hola")
+      fd.append('file', this.image);
+      this.data.updateProfileImage(fd).subscribe((res)=>{
+        this.router.navigate(['/myprofile']);
+      })
     }
   }
 
