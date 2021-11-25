@@ -27,6 +27,7 @@ export class UserService {
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken()
     });
+    //console.log("La data tiene",data);
     if(data==""){
       //console.log(this.authenticationService.getToken())
       return this.httpClient.get( environment.host + environment.apiPath + "/users" ,{

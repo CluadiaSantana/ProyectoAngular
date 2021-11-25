@@ -47,8 +47,7 @@ getTeacherId(){
   }
   let id :string=this.idSearch
   this.teachearService.getTeacher(id).then(response=>{
-    this.teachers = [];
-    this.teachers.push(response)
+    this.teachers = response;
     this.isError = false;
     this.isLoading = false;
   }).catch(e=>{

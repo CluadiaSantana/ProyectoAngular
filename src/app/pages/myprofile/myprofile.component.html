@@ -1,24 +1,25 @@
-<section class="clearfix" >
-  <div class="grid " id="data" >
-    <div class="col-12 col-md-6 col-lg-4 user">
-      <div class="left ">
-        <img class="image col-3 col-md-2 col-lg-1 user"  src="">
+
+  <section class="clearfix">
+    <div class="grid " id="data" *ngFor="let item of users">
+      <div class="col-12 col-md-6 col-lg-4 user">
+        <div class="left ">
+          <img class="image col-3 col-md-2 col-lg-1 user"  src="http://localhost:3001/files/profile/{{item.photoName}}">
+        </div>
+        <div class="center col-3 col-md-2 col-lg-12 " >
+          <h2>Usuario: {{item.userName}}</h2>
+          <h3>Email: {{item.email}}</h3>
+          <h3>Role: {{item.photoName}}</h3>
+          <button type="submit" *ngIf="!change" (click)="chageButton()">Cambiar foto</button>
+        </div>
+        <div *ngIf="change">
+          <div>
+            <input type="file" name="image" (change)="selectImage($event)"/>
+          </div>
+          <div class="center">
+            <button type="submit" (click)="submitPhoto()">Subir</button>
+            <button type="submit" (click)="chageButton()">Cancelar</button>
+          </div>
+        </div> 
       </div>
-      <div class="center col-3 col-md-2 col-lg-12 " >
-        <h2>Usuario: {{userName}}</h2>
-        <h3>Email: {{email}}</h3>
-        <h3>Role: {{role}}</h3>
-        <button type="submit" *ngIf="!change" (click)="chageButton()">Cambiar foto</button>
-      </div>     
-      <div *ngIf="change">
-        <div>
-          <input type="file" name="image" (change)="selectImage($event)"/>
-        </div>
-        <div class="rigth">
-          <button type="submit" (click)="submitPhoto()">Subir</button>
-          <button type="submit" (click)="chageButton()">Cancelar</button>
-        </div>
-      </div> 
     </div>
-  </div>
-  </section>
+    </section>

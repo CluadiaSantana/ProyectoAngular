@@ -24,12 +24,5 @@ export class DataService {
     );
   }
 
-  getImage(photoName: string): Promise <any>{
-    return new Promise ((resolve, reject)=>{
-      
-      resolve(this.httpClient.get(
-        environment.host + environment.apiPath + '/users/profile/' + photoName)
-    )
-  })
-}
+ 
 }
