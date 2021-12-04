@@ -40,6 +40,21 @@ export class UserService {
   }
     };
 
-
-
+    
+  deleteTeacher(teacherId: string, data: any) {
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken(),
+    });
+    return this.httpClient
+      .delete(
+        environment.host +
+          environment.apiPath +
+          '/classes?teacherId=' +
+          teacherId,
+        data
+      )
+      .toPromise();
+  }
 }
+
+
