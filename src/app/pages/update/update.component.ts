@@ -5,11 +5,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-update',
+  templateUrl: './update.component.html',
+  styleUrls: ['./update.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class UpdateComponent implements OnInit {
   form: FormGroup;
   emailError: boolean=true;
   nameError: boolean=true;
@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
   title = 'fileUpload';
   images: any;
 
-  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { 
     this.form= this.formBuilder.group({
       userName: ['',Validators.compose( 
         [Validators.required, Validators.pattern('[a-zA-Z\s ]+')]
@@ -29,9 +29,7 @@ export class SignupComponent implements OnInit {
     }, {
       validators: this.compararPasswords.bind(this)
     });
-   }
-
-
+  }
 
   sign(){
     if(this.form.valid){
@@ -49,7 +47,6 @@ export class SignupComponent implements OnInit {
       this.passwordError =this.form.controls['password'].valid;
     }
   }
-
 
   ngOnInit(): void {
   }
@@ -82,4 +79,5 @@ export class SignupComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-}
+
+}3

@@ -21,6 +21,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './common/services/auth-guard-service.service';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { UpdateComponent } from './pages/update/update.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
     SignupComponent,
     ForbiddenComponent,
     SignInComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    UpdateComponent
 
   ],
   imports: [

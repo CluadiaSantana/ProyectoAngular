@@ -20,12 +20,9 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private authenticationService: AuthenticationService) { }
 
-
-
-
   getUsers(data:string): Promise <any>{
     const httpHeaders = new HttpHeaders({
-      'x-auth': this.authenticationService.getToken()
+      'x-auth': this.authenticationService.getToken() 
     });
     if(data==""){
       //console.log(this.authenticationService.getToken())
@@ -39,6 +36,22 @@ export class UserService {
   }
     };
 
-
+    putUser(id: string, data: any) {
+      const httpHeaders = new HttpHeaders({
+        'x-auth': this.authenticationService.getToken(),
+      });
+      return this.httpClient
+        .put(
+          environment.host +
+            environment.apiPath +
+            '/users?id=' +
+            id + 
+          data, 
+          {
+            headers: httpHeaders,
+          }
+        )
+        .toPromise();
+    };
 
 }
