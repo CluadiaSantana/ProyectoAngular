@@ -1,6 +1,5 @@
-
-<h1 >Registro de Usuarios</h1>
-<h5 >Ingresa tus datos</h5>
+<h1 >Informacion personal de Usuarios</h1>
+<h5 >Actualiza tus datos</h5>
 
 <form [formGroup]="form" (submit)="sign()" class="center-block"> 
     <div class="center-block" >   
@@ -21,9 +20,9 @@
         <label for="confirm">Confirmar password: </label>
         <input type="password" name="confirm" formControlName="confirm">
         <p *ngIf="!confirmError">  Deben coincidir los passwords </p>
-        <p *ngIf="!passwordError">  El password debe contener 8 caraccteres mayusculas minusculas y caracteres especiales </p>
+        <p *ngIf="!passwordError">  El password debe contener 8 caracteres mayusculas minusculas y caracteres especiales </p>
     </div>
     <div>   
-        <button>Signup</button>
+        <button>Guardar</button>
     </div>    
 </form>

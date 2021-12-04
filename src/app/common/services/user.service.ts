@@ -20,12 +20,9 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private authenticationService: AuthenticationService) { }
 
-
-
-
   getUsers(data:string): Promise <any>{
     const httpHeaders = new HttpHeaders({
-      'x-auth': this.authenticationService.getToken()
+      'x-auth': this.authenticationService.getToken() 
     });
     //console.log("La data tiene",data);
     if(data==""){
@@ -55,6 +52,24 @@ export class UserService {
       )
       .toPromise();
   }
+  putTeacher(id: string, data: any) {
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken(),
+    });
+    return this.httpClient
+      .put(
+        environment.host +
+          environment.apiPath +
+          '/users?id=' +
+          id + 
+        data, 
+        {
+          headers: httpHeaders,
+        }
+      )
+      .toPromise();
+  };
 }
+
 
 

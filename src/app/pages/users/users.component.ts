@@ -60,8 +60,12 @@ export class UsersComponent implements OnInit {
     this.idSearch="";
   }
   delete(id : String, userName :String):boolean{
-    console.log("Se borro el usurio"+ " " + id);
+    console.log("Se borro el usuario"+ " " + id);
     console.log(userName);
     return true;
+  }
+
+  update(){
+    
   }
 }

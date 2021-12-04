@@ -5,7 +5,7 @@ import { RecordService } from 'src/app/common/services/record.service';
 
 
 @Component({
-  selector: 'app-registration-records',
+  selector: 'app-registration-records', 
   templateUrl: './registration-records.component.html',
   styleUrls: ['./registration-records.component.scss']
 })
