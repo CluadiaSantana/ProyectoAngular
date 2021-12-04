@@ -16,8 +16,10 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
   saveToken(data : any){
     localStorage.setItem('token',data.token);
     localStorage.setItem('role',data.role);
+    localStorage.setItem('photoName',data.photoName);
     localStorage.setItem('email',data.email);
     localStorage.setItem('userName',data.userName);
+    localStorage.setItem('userId',data.id);
     this.loginStatus.next(true);
     this.roleAdminStatus.next(this.rolePermition("Admin"));
     this.roleStudentStatus.next(this.rolePermition("student"));
@@ -43,6 +45,10 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     return localStorage.getItem('email') || '';
   }
 
+  getPhotoName():string{
+    return localStorage.getItem('photoName') || '';
+  }
+
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token');
   }
@@ -60,6 +66,7 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     localStorage.removeItem('role');
     localStorage.removeItem('email');
     localStorage.removeItem('userName');
+    localStorage.removeItem('photoName');
     this.loginStatus.next(false);
     this.roleAdminStatus.next(false);
     this.roleStudentStatus.next(false);
