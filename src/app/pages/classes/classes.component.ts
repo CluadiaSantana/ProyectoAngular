@@ -41,7 +41,7 @@ export class ClassesComponent implements OnInit {
 }
 
 getClass(){
-  if(!this.studentsId){
+  if(!this.studentsId && !this.teachersId){
     this.classService.getClass("").then(response=>{
       this.classes =response;
       this.isError = false;
@@ -53,10 +53,12 @@ getClass(){
     })
     return;
   }
-  if(this.roleAdmin){
-    this.ids =this.studentsId + "&teacherId=" +this.teachersId
+  if(this.studentsId && this.teachersId){
+    this.ids ="?studentId="+this.studentsId + "&teacherId=" +this.teachersId;
+  }else if(this.studentsId){
+    this.ids="?studentId="+this.studentsId;
   }else{
-    this.ids=this.studentsId
+    this.ids="?teacherId="+this.teachersId;
   }
   this.classService.getClass(this.ids).then(response=>{
     this.classes = response;

@@ -26,7 +26,7 @@ export class ClassService {
     } else {
       return this.httpClient
         .get(
-          environment.host + environment.apiPath + '/classes?studentId=' + data,
+          environment.host + environment.apiPath + '/classes' + data,
           {
             headers: httpHeaders,
           }
