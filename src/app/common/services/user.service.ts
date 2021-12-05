@@ -80,6 +80,17 @@ export class UserService {
       )
       .toPromise();
   };
+
+  uploadUser(id:string, data:any): Promise <any>{
+    const httpHeaders = new HttpHeaders({
+      'x-auth': this.authenticationService.getToken() 
+    });
+    //console.log("La data tiene",data);
+      return this.httpClient.put( environment.host + environment.apiPath + "/users?id="+id,data,{
+      headers: httpHeaders
+    }).toPromise();
+  
+    };
 }
 
 

@@ -12,6 +12,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
+import { UpdateComponent } from './pages/update/update.component';
 import { UsersComponent } from './pages/users/users.component';
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path: 'forbidden', component: ForbiddenComponent},
   {path: 'myprofile', component: MyprofileComponent,canActivate: [AuthGuard], data: {
     status: true,
-  }}
+  }},
+  {path: 'update', component: UpdateComponent},
 ];
 
 @NgModule({

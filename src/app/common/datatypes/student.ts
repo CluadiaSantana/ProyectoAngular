@@ -6,6 +6,5 @@ export interface Student {
     abscences: string;
     totalClasses: number;
     urlVideo: string;
-    studentId: string;
     id: string;
 }
