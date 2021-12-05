@@ -37,6 +37,17 @@ export class UserService {
   }
     };
 
+    getMyUsers(): Promise <any>{
+      const httpHeaders = new HttpHeaders({
+        'x-auth': this.authenticationService.getToken() 
+      });
+      //console.log("La data tiene",data);
+      
+        return this.httpClient.get( environment.host + environment.apiPath + "/users/Me" ,{
+        headers: httpHeaders
+      }).toPromise();
+    }
+
     
   deleteTeacher(teacherId: string, data: any) {
     const httpHeaders = new HttpHeaders({

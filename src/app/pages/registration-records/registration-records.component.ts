@@ -42,7 +42,7 @@ export class RegistrationRecordsComponent implements OnInit {
 }
 
 getRecords(){
-  if(!this.studentsId){
+  if(!this.studentsId && !this.teachersId){
     this.recordService.getRecords("").then(response=>{
       this.records =response;
       this.isError = false;
@@ -54,10 +54,12 @@ getRecords(){
     })
     return;
   }
-  if(this.roleAdmin){
-    this.ids =this.studentsId + "&teacherId=" +this.teachersId
+  if(this.studentsId && this.teachersId){
+    this.ids ="?studentId="+this.studentsId + "&teacherId=" +this.teachersId;
+  }else if(this.studentsId){
+    this.ids="?studentId="+this.studentsId;
   }else{
-    this.ids=this.studentsId
+    this.ids="?teacherId="+this.teachersId;
   }
   this.recordService.getRecords(this.ids).then(response=>{
     this.records = response;
