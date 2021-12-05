@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './common/services/auth-guard-service.service';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { UpdateComponent } from './pages/update/update.component';
+import { NewRecordComponent } from './pages/new-record/new-record.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UpdateComponent } from './pages/update/update.component';
     ForbiddenComponent,
     SignInComponent,
     MyprofileComponent,
-    UpdateComponent
+    UpdateComponent,
+    NewRecordComponent
 
   ],
   imports: [

@@ -1,0 +1,20 @@
+<h1 >Nuevo registro</h1>
+<div class="grid " id="data" *ngFor="let item of students">
+    <h2>Alumno: {{item.userName}}</h2>
+    <h2>Alumno id: {{item.id}}</h2>
+<form [formGroup]="form" (submit)="postRecord" class="center-block"> 
+    <div class="center-block" >   
+        <label for="date">Fecha: </label>
+        <input type="text" name="date" formControlName="date" placeholder="DD.MM.AAAA" >
+        <p *ngIf="!dateError">  Ingresa fecha valida </p>
+    </div>
+    <div>   
+        <label for="hour">Hora: </label>
+        <input type="text" name="email" formControlName="hour" placeholder="XX a XX">
+        <p *ngIf="!hourError">  Ingresa email valido </p>
+    </div>
+    <div>   
+        <button (click)="postRecord()">Guardar</button>
+    </div>    
+</form>
+</div>

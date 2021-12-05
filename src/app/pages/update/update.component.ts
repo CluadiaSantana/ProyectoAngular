@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SignService } from 'src/app/common/services/sign.service';
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/common/datatypes/user';
 import { UserService } from 'src/app/common/services/user.service';
 import { UploadService } from 'src/app/common/services/upload.service';
-import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-update',

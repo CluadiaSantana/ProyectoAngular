@@ -42,7 +42,8 @@ export class RecordService {
         headers: httpHeaders,
       })
       .toPromise();
-  }; 
+  };
+   
   putRecord(teacherId: string, studentId: string, data: any) {
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken(),

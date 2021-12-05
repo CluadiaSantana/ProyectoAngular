@@ -4,6 +4,7 @@ export interface Student {
     inscriptionDate: string;
     graduationDate: string;
     abscences: string;
+    teacher:string;
     totalClasses: number;
     urlVideo: string;
     id: string;

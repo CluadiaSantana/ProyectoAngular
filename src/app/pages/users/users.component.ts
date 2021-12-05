@@ -32,6 +32,7 @@ export class UsersComponent implements OnInit {
         this.isError = true;
         this.isLoading = false;
       })
+      this.uploadService.cleanUpload();
   }
 
   getUserId(){

@@ -7,6 +7,7 @@ import { ClassesComponent } from './pages/classes/classes.component';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { NewRecordComponent } from './pages/new-record/new-record.component';
 import { RegistrationRecordsComponent } from './pages/registration-records/registration-records.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -46,7 +47,16 @@ const routes: Routes = [
   {path: 'myprofile', component: MyprofileComponent,canActivate: [AuthGuard], data: {
     status: true,
   }},
-  {path: 'update', component: UpdateComponent},
+  {path: 'update', component: UpdateComponent, canActivate: [AuthGuard,RoleGuard], data: {
+    status: true,
+    role: 'Admin',
+    role1: 'Admin'
+  }},
+  {path: 'newRecord', component: NewRecordComponent, canActivate: [AuthGuard,RoleGuard], data: {
+    status: true,
+    role: 'Admin',
+    role1: 'teacher'
+  }}
 ];
 
 @NgModule({
