@@ -17,52 +17,30 @@
   </div>
 </section>
 
-
-
 <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
 <section class="clearfix" *ngIf="!isError">
   <div class="grid " id="data" *ngFor="let item of records">
     <div class="data-item col-12 col-md-6 col-lg-3 ">
       <mat-card class="example-card">
         <mat-card-title>Alumno</mat-card-title>
-        <mat-card-subtitle>Id: {{item.studentId}}</mat-card-subtitle>
+        <mat-card-subtitle>Alumno: {{item.student[0].userName}}</mat-card-subtitle>
         <mat-card-content>
-          <h3>Maestro: {{item.teacherId}}</h3>
+          <h3>Alumno id: {{item.student[0].id}}</h3>
+          <h3>Maestro: {{item.teacher[0].userName}}</h3>
+          <h3>Maestro id: {{item.teacher[0].id}}</h3>
           <h3>Fecha: {{item.date}}</h3>
           <h3>Horario: {{item.hour}}</h3>
           <h3>Status: {{item.status}}</h3>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+        <mat-card-actions *ngIf="(item.status!='Cancelada') && (item.status!='Completada')">
+          <button mat-button *ngIf="(roleStudent) && (item.status=='Por confirmar')" class="update" (click)="putRecord(item._id,'Confirmada')">Confirmar</button>
+          <button mat-button *ngIf="(!roleStudent) && (item.status=='Confirmada')" class="update" (click)="putRecord(item._id,'Completada')">Completar</button>
+          <button mat-button *ngIf="(!roleStudent)" class="update" (click)="putRecord(item._id,'Cancelada')">Cancelada</button>
         </mat-card-actions>
       </mat-card>
-<section *ngIf="!roleStudent" class="buscador-students">
-  <form (submit)="getRecords()">
-      <input name="studenstId" [(ngModel)]="studentsId" class="form-control backbackPrimary" placeholder="Student Id for search">
-      <input  *ngIf="roleAdmin" name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary" placeholder="Teacher Id for search">
-      <button class='but' >BUSCAR</button>
-  </form>
-</section>
-  <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
-  <section class="clearfix" *ngIf="!isError">
-    <div class="grid " id="data" *ngFor="let item of records">
-      <div class="data-item col-12 col-md-6 col-lg-3 ">
-        <h2>Alumno: {{item.student[0].userName}}</h2>
-        <h2>Alumno id: {{item.student[0].id}}</h2>
-        <h3>Maestro: {{item.teacher[0].userName}}</h3>
-        <h3>Maestro id: {{item.teacher[0].id}}</h3>
-        <h3>Fecha: {{item.date}}</h3>
-        <h3>Horario: {{item.hour}}</h3>
-        <h3>Status: {{item.status}}</h3>
-        <div *ngIf="(item.status!='Cancelada') && (item.status!='Completada')" >
-          <button *ngIf="(roleStudent) && (item.status=='Por confirmar')" class="update" (click)="putRecord(item._id,'Confirmada')" >Confirmar</button>
-          <button *ngIf="(!roleStudent) && (item.status=='Confirmada')" class="update" (click)="putRecord(item._id,'Completada')">Completar</button>
-          <button *ngIf="(!roleStudent)" class="update" (click)="putRecord(item._id,'Cancelada')">Cancelada</button>
-        </div>
+  
       </div>
     </div>
-
   </section>
   <p *ngIf="records.length === 0 && !isError && !isLoading">La lista esta vacia</p>
   <p *ngIf="isLoading">Cargando...</p> 
