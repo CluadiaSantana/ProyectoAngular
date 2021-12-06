@@ -1,28 +1,29 @@
-<section class="buscador-usuarios">
-  <form (submit)="getUserId()">
-      <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="User Id for search">
-      <button class="search but">BUSCAR</button>
-  </form>
-
-
-
-
-<section class="clearfix" *ngIf="!isError">
-<div class="grid " id="data" *ngFor="let item of users">
-  <div class="col-12 col-md-6 col-lg-4 user">
-    <div class="left ">
-      <img class="image col-3 col-md-2 col-lg-1 user"  src="http://localhost:3001/files/profile/{{item.photoName}}">
-    </div>
-    <div class="center col-3 col-md-2 col-lg-12 " >
-      <h2>Usuario: {{item.userName}}</h2>
-      <h3>Email: {{item.email}}</h3>
-      <h3>Role: {{item.role}}</h3>
-    </div>
-    <button class="right" (click)="delete(item.id,item.userName)">Delete</button>
-    <button class="update" (click)="update()">Update</button>
+  <div class="container">
+    <form (submit)="getUserId()" class="searchForm">
+      <mat-form-field appearance="fill" class="matForm">
+        <mat-label>User Id</mat-label>
+        <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="User Id for search">
+      </mat-form-field>
+      <button mat-raised-button class="search but">BUSCAR</button>
+    </form>
   </div>
-</div>
-</section>
 
-<p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacia</p>
-<p *ngIf="isLoading">Cargando...</p>
+  <section class="clearfix" *ngIf="!isError">
+    <div class="grid " id="data" *ngFor="let item of users">
+      <div class="col-12 col-md-6 col-lg-4 user">
+        <div class="left">
+          <img class="image col-3 col-md-2 col-lg-1 user" src="http://localhost:3001/files/profile/{{item.photoName}}">
+        </div>
+        <div class="center col-3 col-md-2 col-lg-12 ">
+          <h2>Usuario: {{item.userName}}</h2>
+          <h3>Email: {{item.email}}</h3>
+          <h3>Role: {{item.role}}</h3>
+        </div>
+        <button mat-raised-button class="right" (click)="delete(item.id,item.userName)">Delete</button><br>
+        <button mat-raised-button class="update" (click)="update()">Update</button>
+      </div>
+    </div>
+  </section>
+
+  <p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+  <p *ngIf="isLoading">Cargando...</p>

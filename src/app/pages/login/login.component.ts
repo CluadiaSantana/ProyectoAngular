@@ -8,10 +8,12 @@ import { LoginService } from 'src/app/common/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
  
   email: string=""; 
   password: string="";
+  hide = true;
 
   constructor( private authenticationService : AuthenticationService, private router: Router,private loginService: LoginService) { }
 

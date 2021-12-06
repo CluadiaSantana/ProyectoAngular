@@ -1,39 +1,39 @@
-h1{
-    color:mediumblue; 
-    margin-top: 1ex; 
-    text-align:center
+h1 {
+  color: mediumblue;
+  margin-top: 1rem;
+  text-align: center;
 }
 
-h5{
-    color: gray;
-     margin-top: 0.5ex; 
-     text-align:center
+h5 {
+  color: gray;
+  text-align: center;
 }
 
 .center-block {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    text-align:center
-  }
-  label{
-      display:block;
-    }
-
-button{
-    margin-top: 10px;
-    background-color: rgba(0, 0, 255, 0.788);
-  border-radius: 11px;
-  text-align:center;
-  justify-content: center;  
-  align-items: center;
-  color: white;
-  height: 30px;
-  font-size: 15px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center
 }
-input{
-    border-radius: 11px;
-    font-size: 15px;
-    height: 20px;
-    width: 350px;
+
+label {
+  display: block;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    width: 10rem;
+    margin-top: 1rem;
+}
+
+input {
+  border-radius: 11px;
+  font-size: 15px;
+  height: 20px;
+  width: 350px;
+}
+
+p{
+    color: red;
 }

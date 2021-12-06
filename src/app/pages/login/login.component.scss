@@ -1,8 +1,33 @@
-form{
-    margin-top: 1rem;
+h1 {
+  color: mediumblue;
+  margin-top: 1rem;
+  text-align: center;
 }
-.boton-login{
-    background-color: green;
-    color: white;
-    width: 10.7rem;
+
+h5 {
+  color: gray;
+  text-align: center;
+}
+
+.boton-login {
+  background-color: green;
+  color: white;
+  width: 10.7rem;
+  border-color: transparent;
+  transition: all .5s ease;
+}
+
+.boton-login:hover{ 
+  background-color: rgb(116, 74, 199);
+  border-color: transparent;
+  
+}
+
+.formulario {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
