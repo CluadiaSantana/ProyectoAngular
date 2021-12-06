@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/common/services/login.service';
+import { SocketsService } from 'src/app/common/services/sockets.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   password: string="";
   hide = true;
 
-  constructor( private authenticationService : AuthenticationService, private router: Router,private loginService: LoginService) { }
+  constructor( private authenticationService : AuthenticationService, private router: Router,private loginService: LoginService, private socketService: SocketsService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }).then((response)=>{
       this.authenticationService.saveToken(response);
+      this.socketService.connect(this.authenticationService.getToken());
       this.router.navigate(['/classes']);
     }). catch();
   }

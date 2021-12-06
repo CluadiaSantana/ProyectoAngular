@@ -4,6 +4,10 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { GoogleService } from 'src/app/common/services/google.service';
+import { SocketsService } from 'src/app/common/services/sockets.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-header', 
@@ -20,10 +24,13 @@ export class HeaderComponent implements OnInit {
   name: string="";
   googleId: string="";
   idToken: string="";
-
+  noSizecancel = 0;
+  noSizConfirm = 0;
+  noSizComplete = 0;
+  noSizNew = 0;
 
   constructor(private authenticationService : AuthenticationService, private router: Router,
-    private socialAuthService: SocialAuthService, private googleService: GoogleService) { 
+    private socialAuthService: SocialAuthService, private googleService: GoogleService, private socketService: SocketsService) { 
     this.authenticationService.loginStatus.subscribe((status:boolean)=>{
       this.isLogged=status;
     });
@@ -63,9 +70,18 @@ export class HeaderComponent implements OnInit {
 
         }).then(response=>{
           this.authenticationService.saveToken(response);
+          this.socketService.connect(this.authenticationService.getToken());
           this.router.navigate(['/users']);
         });
       });
+  }
+
+  openNotifications() {
+    this.router.navigate(['/records']);
+    this.noSizecancel = 0;
+    this.noSizConfirm = 0;
+    this.noSizComplete = 0;
+    this.noSizNew = 0;
   }
 
 }
