@@ -5,7 +5,6 @@ import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { GoogleService } from 'src/app/common/services/google.service';
 import { SocketsService } from 'src/app/common/services/sockets.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/common/services/user.service';
 import { User } from 'src/app/common/datatypes/user';
 
@@ -45,13 +44,13 @@ export class HeaderComponent implements OnInit {
     this.authenticationService.roleSTeacherStatus.subscribe((status:boolean)=>{
       this.roleTeacher=status;
     });
-    this.userService.getMyUsers().then((response: User)=>{
+    /*this.userService.getMyUsers().then((response: User)=>{
       this.noSizeCancel=response.noSizeCancel;
       this.noSizeRecord=response.noSizeRecord;
       this.noSizeConfirm=response.noSizeConfirm;
       this.noSizeComplete=response.noSizeComplete;
     })
-    
+    */
   }
 
   ngOnInit(): void {

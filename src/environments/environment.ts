@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  host: "http://localhost:3001",
+  host: "https://bateria-desde-cero.herokuapp.com",
   apiPath: "/api",
   authPath: "/auth",
   GoogleProvider: "959886331117-k83jcgut24jgeonjlhfqo1vfflcmjale.apps.googleusercontent.com",
-  socketurl:"http://localhost:3001"
+  socketurl:"https://bateria-desde-cero.herokuapp.com"
 };
 
 /*
