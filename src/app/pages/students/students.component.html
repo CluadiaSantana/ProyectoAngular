@@ -15,8 +15,8 @@
   <div class="grid " id="data" *ngFor="let item of students">
     <div class="data-item col-12 col-md-6 col-lg-3 ">
       <mat-card class="example-card">
-        <mat-card-title>Alumno</mat-card-title>
-        <mat-card-subtitle>Id: {{item.userName}}</mat-card-subtitle>
+        <mat-card-title>Alumno {{item.userName}}</mat-card-title>
+        <mat-card-subtitle>Id: {{item.id}}</mat-card-subtitle>
         <mat-card-content>
           <h3>Fecha de inscripcion: {{item.inscriptionDate}}</h3>
           <h3>Graduacion: {{item.graduationDate}}</h3>
@@ -25,18 +25,9 @@
           <h3>Video de graduacion: {{item.urlVideo}}</h3>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button mat-button (click)="newRecord(item.id)">Nuevo registro</button>
         </mat-card-actions>
       </mat-card>
-      <h2>Alumno: {{item.userName}}</h2>
-      <h2>Alumno id: {{item.id}}</h2>
-      <h3>Fecha de inscripcion: {{item.inscriptionDate}}</h3>
-      <h3>Graduacion: {{item.graduationDate}}</h3>
-      <h3>Faltas: {{item.abscences}}</h3>
-      <h3>Clases tomadas: {{item.totalClasses}}</h3>
-      <h3>Video de graduacion: {{item.urlVideo}}</h3>
-      <button class="update" (click)="newRecord(item.id)">Nuevo registro</button>
     </div>
     
   </div>

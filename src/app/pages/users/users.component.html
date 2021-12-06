@@ -16,31 +16,14 @@
         </div>
         <div class="center col-3 col-md-2 col-lg-12 ">
           <h2>Usuario: {{item.userName}}</h2>
+          <h2>Usuario: {{item.id}}</h2>
           <h3>Email: {{item.email}}</h3>
           <h3>Role: {{item.role}}</h3>
         </div>
         <button mat-raised-button class="right" (click)="delete(item.id,item.userName)">Delete</button><br>
-        <button mat-raised-button class="update" (click)="update()">Update</button>
+        <button mat-raised-button class="update" (click)="update(item.id)">Update</button>
       </div>
     </div>
   </section>
-<section class="clearfix" *ngIf="!isError">
-<div class="grid " id="data" *ngFor="let item of users">
-  <div class="col-12 col-md-6 col-lg-4 user">
-    <div class="left ">
-      <img class="image col-3 col-md-2 col-lg-1 user"  src="http://localhost:3001/files/profile/{{item.photoName}}">
-    </div>
-    <div class="center col-3 col-md-2 col-lg-12 " >
-      <h2>Usuario: {{item.userName}}</h2>
-      <h2>Usuario: {{item.id}}</h2>
-      <h3>Email: {{item.email}}</h3>
-      <h3>Role: {{item.role}}</h3>
-    </div>
-    <button class="right" (click)="delete(item.id,item.userName)">Delete</button>
-    <button class="update" (click)="update(item.id)">Update</button>
-  </div>
-</div>
-</section>
-
   <p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacia</p>
   <p *ngIf="isLoading">Cargando...</p>

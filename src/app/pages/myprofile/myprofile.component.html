@@ -8,8 +8,7 @@
         <h2>Usuario: {{item.userName}}</h2>
         <h3>Email: {{item.email}}</h3>
         <h3>Role: {{item.photoName}}</h3>
-        <button id="cambiar-button" mat-stroked-button type="submit" *ngIf="!change" (click)="chageButton()">Cambiar
-          foto</button>
+        <button id="cambiar-button" mat-stroked-button type="submit" *ngIf="!change" (click)="chageButton()">Cambiar foto</button>
       </div>
       <div *ngIf="change">
         <div>
@@ -18,12 +17,6 @@
         <div class="center">
           <button id="subir-button" mat-stroked-button type="submit" (click)="submitPhoto()">Subir</button>
           <button id="cancelar-button" mat-stroked-button type="submit" (click)="chageButton()">Cancelar</button>
-        <div class="center col-3 col-md-2 col-lg-12 " >
-          <h2>Usuario: {{item.userName}}</h2>
-          <h2>Usuario: {{item.id}}</h2>
-          <h3>Email: {{item.email}}</h3>
-          <h3>Role: {{item.photoName}}</h3>
-          <button type="submit" *ngIf="!change" (click)="chageButton()">Cambiar foto</button>
         </div>
       </div>
     </div>
