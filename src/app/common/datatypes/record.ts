@@ -7,4 +7,5 @@ export interface Record {
     status:string
     teacher: User[];
     student: User[];
+    _id :any;
 }

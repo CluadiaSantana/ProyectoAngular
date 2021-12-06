@@ -16,8 +16,14 @@
         <h3>Fecha: {{item.date}}</h3>
         <h3>Horario: {{item.hour}}</h3>
         <h3>Status: {{item.status}}</h3>
+        <div *ngIf="(item.status!='Cancelada') && (item.status!='Completada')" >
+          <button *ngIf="(roleStudent) && (item.status=='Por confirmar')" class="update" (click)="putRecord(item._id,'Confirmada')" >Confirmar</button>
+          <button *ngIf="(!roleStudent) && (item.status=='Confirmada')" class="update" (click)="putRecord(item._id,'Completada')">Completar</button>
+          <button *ngIf="(!roleStudent)" class="update" (click)="putRecord(item._id,'Cancelada')">Cancelada</button>
+        </div>
       </div>
     </div>
+
   </section>
   <p *ngIf="records.length === 0 && !isError && !isLoading">La lista esta vacia</p>
-  <p *ngIf="isLoading">Cargando...</p>
+  <p *ngIf="isLoading">Cargando...</p> 

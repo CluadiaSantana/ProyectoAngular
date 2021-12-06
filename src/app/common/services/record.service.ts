@@ -44,7 +44,7 @@ export class RecordService {
       .toPromise();
   };
    
-  putRecord(teacherId: string, studentId: string, data: any) {
+  putRecord( data: any) {
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken(),
     });
@@ -52,10 +52,7 @@ export class RecordService {
       .put(
         environment.host +
           environment.apiPath +
-          '/records?studentId=' +
-          studentId +
-          '&teacherId=' +
-          teacherId,
+          '/records' ,
         data,
         {
           headers: httpHeaders,
@@ -63,6 +60,7 @@ export class RecordService {
       )
       .toPromise();
   };
+  
   deleteRecord(teacherId: string, studentId: string, data: any) {
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken(),
