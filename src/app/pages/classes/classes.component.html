@@ -23,10 +23,11 @@
   <div class="grid " id="data" *ngFor="let item of classes">
     <div class="data-item col-12 col-md-6 col-lg-3 ">
       <mat-card class="example-card">
-        <mat-card-title>Alumno</mat-card-title>
+        <mat-card-title>Clase {{item.student[0].userName}} </mat-card-title>
         <mat-card-subtitle>Id: {{item.studentId}}</mat-card-subtitle>
         <mat-card-content>
-          <h3>Maestro: {{item.teacherId}}</h3>
+          <h3>Maestro: {{item.teacher[0].userName}}</h3>
+          <h3>Maestro id: {{item.teacher[0].id}}</h3>
           <h3>Año: {{item.year}}</h3>
           <h3>Numero de clases: {{item.numClasses}}</h3>
           <h3>Clases a la semana: {{item.weeklyHours}}</h3>
@@ -36,13 +37,6 @@
           <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
-      <h2>Alumno: {{item.student[0].userName}}</h2>
-      <h2>Alumno id: {{item.student[0].id}}</h2>
-      <h3>Maestro: {{item.teacher[0].userName}}</h3>
-      <h3>Maestro id: {{item.teacher[0].id}}</h3>
-      <h3>Año: {{item.year}}</h3>
-      <h3>Numero de clases: {{item.numClasses}}</h3>
-      <h3>Clases a la semana: {{item.weeklyHours}}</h3>
     </div>
   </div>
 </section>
