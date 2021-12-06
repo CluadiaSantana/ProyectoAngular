@@ -13,11 +13,17 @@
         <p *ngIf="!dateError"> Ingresa fecha válida </p>
       </mat-form-field>
     </div>
-
-    <div class="center-block">
+    <div>
       <mat-form-field appearance="fill" class="matField">
-        <mat-label for="hour">Hora: </mat-label>
-        <input matInput type="text" name="time" formControlName="hour" placeholder="XX a XX">
+        <mat-label for="hour">Hora:</mat-label>
+        <mat-select name="hour" formControlName="hour">
+          <mat-option value="3 a 4">3 a 4</mat-option>
+          <mat-option value="4 a 5">4 a 5</mat-option>
+          <mat-option value="5 a 6">5 a 6</mat-option>
+          <mat-option value="6 a 7">6 a 7</mat-option>
+          <mat-option value="7 a 8">7 a 8</mat-option>
+          <mat-option value="8 a 9">8 a 9</mat-option>
+        </mat-select>
         <p *ngIf="!hourError"> Ingresa hora válida </p>
       </mat-form-field>
     </div>

@@ -18,26 +18,25 @@
       </ul>
     </div>
     <section class="toolbar">
-
       <ul>
         <a *ngIf="isLogged && roleStudent" mat-icon-button class="icon-big">
-          <mat-icon matBadge="{{noSizecancel}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn">
-            highlight_off</mat-icon>
-        </a>
-        <a *ngIf="isLogged && roleStudent" mat-icon-button class="icon-big">
-          <mat-icon matBadge="{{noSizecancel}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn">
-            assignment_turned_in</mat-icon>
-        </a>
-        <a *ngIf="isLogged && !(roleStudent || roleAdmin)" mat-icon-button class="icon-big">
-          <mat-icon matBadge="{{noSizecancel}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn">
-            confirmation_number</mat-icon>
-        </a>
-        <a *ngIf="isLogged && roleStudent" mat-icon-button class="icon-big">
-          <mat-icon matBadge="{{noSizecancel}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn">
+          <mat-icon matBadge="{{noSizeRecord}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn" (click)="openNotifications()">
             add_circle</mat-icon>
         </a>
+        <a *ngIf="isLogged && roleTeacher" mat-icon-button class="icon-big">
+          <mat-icon matBadge="{{noSizeConfirm}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn" (click)="openNotifications()">
+            thumb_up_alt</mat-icon>
+        </a>
+        <a *ngIf="isLogged && roleStudent" mat-icon-button class="icon-big">
+          <mat-icon matBadge="{{noSizeCancel}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn" (click)="openNotifications()">
+            cancel</mat-icon>
+        </a>
+        <a *ngIf="isLogged && roleStudent" mat-icon-button class="icon-big">
+          <mat-icon matBadge="{{noSizeComplete}}" [matBadgeHidden]=false matBadgeSize="small" matBadgeColor="warn" (click)="openNotifications()">
+            fact_check</mat-icon>
+        </a>
         <button mat-raised-button type="button" routerLink="/login" *ngIf="!isLogged">Login</button>
-        <button mat-raised-button type="button" aria-expanded="false" routerLink="/signup" *ngIf="!isLogged">Sign
+        <button  mat-raised-button type="button" aria-expanded="false" routerLink="/signup" *ngIf="!isLogged">Sign
           Up</button>
         <button mat-raised-button type="button" class="button-logout" aria-expanded="false" *ngIf="isLogged"
           (click)="logOut()" routerLink="/login">Logout</button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Record } from 'src/app/common/datatypes/record';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { RecordService } from 'src/app/common/services/record.service';
+import { SocketsService } from 'src/app/common/services/sockets.service';
 
 @Component({
   selector: 'app-registration-records',
@@ -19,7 +20,8 @@ export class RegistrationRecordsComponent implements OnInit {
   roleStudent: boolean = false;
   constructor(
     private recordService: RecordService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private socketService: SocketsService
   ) {
     this.authenticationService.roleAdminStatus.subscribe((status: boolean) => {
       this.roleAdmin = status;
@@ -86,7 +88,7 @@ export class RegistrationRecordsComponent implements OnInit {
     this.studentsId = '';
     this.teachersId = '';
   }
-  putRecord(_id: any, upda: string){
+  putRecord(_id: any, idto: string, upda: string){
     console.log(upda)
     this.recordService.putRecord({
       _id: _id,
@@ -95,6 +97,11 @@ export class RegistrationRecordsComponent implements OnInit {
      this.recordService
       .getRecords('')
       .then((response) => {
+        console.log(idto);
+        this.socketService.emit('newNotification',{
+          id: idto,
+          name: upda
+        })
         this.records = response;
         this.isError = false;
         this.isLoading = false;
@@ -106,4 +113,5 @@ export class RegistrationRecordsComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
 }

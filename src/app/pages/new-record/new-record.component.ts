@@ -5,6 +5,7 @@ import { NewRecordService } from 'src/app/common/services/new-record.service';
 import { StudentService } from 'src/app/common/services/student.service';
 import { Student } from 'src/app/common/datatypes/student';
 import { RecordService } from 'src/app/common/services/record.service';
+import { SocketsService } from 'src/app/common/services/sockets.service';
 
 @Component({
   selector: 'app-new-record',
@@ -17,7 +18,8 @@ export class NewRecordComponent implements OnInit {
   hourError: boolean=true;
   students: Student [] = [];
 
-  constructor(private stundetService: StudentService, private router: Router, private formBuilder: FormBuilder, private newRecordService: NewRecordService, private recordService: RecordService) {
+  constructor(private stundetService: StudentService, private router: Router, private formBuilder: FormBuilder, private newRecordService: NewRecordService, private recordService: RecordService, 
+    private socketService: SocketsService) {
     this.form= this.formBuilder.group({
       date: ['' ,Validators.compose( [ Validators.pattern('[a-zA-Z\s ]+')])],
         hour: ['']
@@ -39,6 +41,9 @@ export class NewRecordComponent implements OnInit {
       date: this.form.controls['date'].value,
       hour: this.form.controls['hour'].value
     }).then((response)=>{
+      this.socketService.emit('newRecord',{
+        id: this.students[0].id,
+      })
       this.router.navigate(['/records']);
     })
   }

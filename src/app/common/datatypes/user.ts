@@ -5,4 +5,8 @@ export interface User {
     id: string;
     email: string;
     photoName: string;
+    noSizeRecord: number;
+    noSizeCancel: number;
+    noSizeConfirm: number;
+    noSizeComplete: number;
 }

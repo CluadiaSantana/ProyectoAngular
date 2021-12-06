@@ -9,8 +9,12 @@ export class AuthenticationService {
 loginStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
 roleAdminStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
 roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
+roleSTeacherStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
   constructor() {
     this.loginStatus.next(this.isLoggedIn());
+    this.roleAdminStatus.next(this.rolePermitionAdmin());
+    this.roleStudentStatus.next(this.rolePermitionStudent());
+    this.roleSTeacherStatus.next(this.rolePermitionTeacher());
    }
  
   saveToken(data : any){
@@ -21,8 +25,9 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     localStorage.setItem('userName',data.userName);
     localStorage.setItem('userId',data.id);
     this.loginStatus.next(true);
-    this.roleAdminStatus.next(this.rolePermition("Admin"));
-    this.roleStudentStatus.next(this.rolePermition("student"));
+    this.roleAdminStatus.next(this.rolePermitionAdmin());
+    this.roleStudentStatus.next(this.rolePermitionStudent());
+    this.roleSTeacherStatus.next(this.rolePermitionTeacher());
   }
 
   getUserId() : string {
@@ -53,8 +58,24 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     return !!localStorage.getItem('token');
   }
 
-  rolePermition(role : String): boolean{
-    if(localStorage.getItem('role')==role){
+  rolePermitionTeacher(): boolean{
+    if(localStorage.getItem('role')=="teacher"){
+      return(true);
+    }else{
+      return(false);
+    }
+  }
+
+  rolePermitionStudent(): boolean{
+    if(localStorage.getItem('role')=="student"){
+      return(true);
+    }else{
+      return(false);
+    }
+  }
+
+  rolePermitionAdmin(): boolean{
+    if(localStorage.getItem('role')=='Admin'){
       return(true);
     }else{
       return(false);
@@ -70,6 +91,7 @@ roleStudentStatus: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false)
     this.loginStatus.next(false);
     this.roleAdminStatus.next(false);
     this.roleStudentStatus.next(false);
+    this.roleSTeacherStatus.next(false);
   }
 
 }

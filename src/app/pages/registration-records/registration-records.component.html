@@ -35,9 +35,9 @@
           <hr>
         </mat-card-content>
         <mat-card-actions *ngIf="(item.status!='Cancelada') && (item.status!='Completada')">
-          <button mat-raised-button *ngIf="(roleStudent) && (item.status=='Por confirmar')" class="update" (click)="putRecord(item._id,'Confirmada')">Confirmar</button>
-          <button mat-raised-button *ngIf="(!roleStudent) && (item.status=='Confirmada')" class="update" (click)="putRecord(item._id,'Completada')">Completar</button>
-          <button mat-raised-button *ngIf="(!roleStudent)" class="update" (click)="putRecord(item._id,'Cancelada')">Cancelada</button>
+          <button mat-raised-button *ngIf="(roleStudent) && (item.status=='Por confirmar')" class="update" (click)="putRecord(item._id,item.teacher[0].id,'Confirmada')">Confirmar</button>
+          <button mat-raised-button *ngIf="(!roleStudent) && (item.status=='Confirmada')" class="update" (click)="putRecord(item._id,item.student[0].id,'Completada')">Completar</button>
+          <button mat-raised-button *ngIf="(!roleStudent)" class="update" (click)="putRecord(item._id,item.student[0].id,'Cancelada')">Cancelada</button>
         </mat-card-actions>
       </mat-card>
   
