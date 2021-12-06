@@ -1,8 +1,8 @@
   <div class="container">
     <form (submit)="getUserId()" class="searchForm">
       <mat-form-field appearance="fill" class="matForm">
-        <mat-label>User Id</mat-label>
-        <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="User Id for search">
+        <mat-label>ID Usuario</mat-label>
+        <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="Búsqueda por Id de usuario">
       </mat-form-field>
       <button mat-raised-button class="search but">BUSCAR</button>
     </form>
@@ -16,14 +16,17 @@
         </div>
         <div class="center col-3 col-md-2 col-lg-12 ">
           <h2>Usuario: {{item.userName}}</h2>
-          <h2>Usuario: {{item.id}}</h2>
-          <h3>Email: {{item.email}}</h3>
-          <h3>Role: {{item.role}}</h3>
+          <h2>Id: {{item.id}}</h2>
+          <hr>
+          <h3>Email: {{item.email}}</h3> 
+          <h3>Rol: {{item.role}}</h3>
         </div>
-        <button mat-raised-button class="right" (click)="delete(item.id,item.userName)">Delete</button><br>
-        <button mat-raised-button class="update" (click)="update(item.id)">Update</button>
+        <button mat-raised-button class="update" (click)="update(item.id)">Editar</button>
+        <button mat-raised-button class="right" (click)="delete(item.id,item.userName)">Eliminar</button>
       </div>
     </div>
   </section>
-  <p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+  <p *ngIf="users.length === 0 && !isError && !isLoading">La lista esta vacía</p>
   <p *ngIf="isLoading">Cargando...</p>
+
+  

@@ -2,15 +2,15 @@
   <div class="container">
     <form (submit)="getClass()" class="searchForm">
       <mat-form-field appearance="fill" class="matForm">
-        <mat-label>Student Id</mat-label>
+        <mat-label>ID Estudiante</mat-label>
         <input matInput name="studenstId" [(ngModel)]="studentsId" class="form-control"
-          placeholder="Student Id for search">
+          placeholder="Búsqueda por ID de estudiante">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="matForm" *ngIf="roleAdmin">
-        <mat-label>Teacher Id</mat-label>
+        <mat-label>ID Estudiante</mat-label>
         <input matInput  name="teachersId" [(ngModel)]="teachersId" class="form-control"
-          placeholder="Teacher Id for search">
+          placeholder="Búsqueda por ID de estudiante ">
       </mat-form-field>
 
       <button mat-raised-button class='but'>BUSCAR</button>
@@ -25,20 +25,20 @@
       <mat-card class="example-card">
         <mat-card-title>Clase {{item.student[0].userName}} </mat-card-title>
         <mat-card-subtitle>Id: {{item.studentId}}</mat-card-subtitle>
+        <hr>
         <mat-card-content>
           <h3>Maestro: {{item.teacher[0].userName}}</h3>
-          <h3>Maestro id: {{item.teacher[0].id}}</h3>
+          <h3>Id de maestro: {{item.teacher[0].id}}</h3>
           <h3>Año: {{item.year}}</h3>
-          <h3>Numero de clases: {{item.numClasses}}</h3>
+          <h3>Número de clases: {{item.numClasses}}</h3>
           <h3>Clases a la semana: {{item.weeklyHours}}</h3>
+          <hr>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
 </section>
-<p *ngIf="classes.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="classes.length === 0 && !isError && !isLoading">La lista esta vacía</p>
 <p *ngIf="isLoading">Cargando...</p>
