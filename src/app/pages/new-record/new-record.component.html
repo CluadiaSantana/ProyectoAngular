@@ -1,20 +1,29 @@
-<h1 >Nuevo registro</h1>
+<h1>Nuevo registro</h1>
+
 <div class="grid " id="data" *ngFor="let item of students">
-    <h2>Alumno: {{item.userName}}</h2>
-    <h2>Alumno id: {{item.id}}</h2>
-<form [formGroup]="form" (submit)="postRecord" class="center-block"> 
-    <div class="center-block" >   
-        <label for="date">Fecha: </label>
-        <input type="text" name="date" formControlName="date" placeholder="DD.MM.AAAA" >
-        <p *ngIf="!dateError">  Ingresa fecha valida </p>
+  <h2>Alumno: {{item.userName}}</h2>
+  <h2>Id de Alumno: {{item.id}}</h2>
+
+  <form [formGroup]="form" (submit)="postRecord" class="center-block">
+    <div class="center-block">
+      <mat-form-field appearance="fill" class="matField">
+        <mat-label for="date">Fecha: </mat-label>
+        <input matInput type="date" name="date" formControlName="date"
+          placeholder="DD/MM/AAAA">
+        <p *ngIf="!dateError"> Ingresa fecha válida </p>
+      </mat-form-field>
     </div>
-    <div>   
-        <label for="hour">Hora: </label>
-        <input type="text" name="email" formControlName="hour" placeholder="XX a XX">
-        <p *ngIf="!hourError">  Ingresa email valido </p>
+
+    <div class="center-block">
+      <mat-form-field appearance="fill" class="matField">
+        <mat-label for="hour">Hora: </mat-label>
+        <input matInput type="text" name="time" formControlName="hour" placeholder="XX a XX">
+        <p *ngIf="!hourError"> Ingresa hora válida </p>
+      </mat-form-field>
     </div>
-    <div>   
-        <button (click)="postRecord()">Guardar</button>
-    </div>    
-</form>
+
+    <div>
+      <button mat-raised-button (click)="postRecord()">Guardar</button>
+    </div>
+  </form>
 </div>

@@ -1,8 +1,8 @@
 <div class="container">
   <form (submit)="getTeacherId()" class="searchForm">
     <mat-form-field appearance="fill" class="matForm">
-      <mat-label>Teacher Id</mat-label>
-      <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="Teacher Id for search">
+      <mat-label>ID Maestro</mat-label>
+      <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="Búsqueda de maestro por ID">
     </mat-form-field>
     <button mat-raised-button class="search but">BUSCAR</button>
   </form>
@@ -15,15 +15,17 @@
       <mat-card class="example-card">
         <mat-card-title>Maestro {{item.userName}}</mat-card-title>
         <mat-card-subtitle>Id: {{item.id}}</mat-card-subtitle>
+        <hr>
         <mat-card-content>
           <h3>Fecha de inicio: {{item.hiringDate}}</h3>
-          <h3>Status: {{item.status}}</h3>
-          <h3>Salary: {{item.salary}}</h3>
-          <h3>Hiring date: {{item.hiringDate}}</h3>
+          <h3>Estado: {{item.status}}</h3>
+          <h3>Salario: {{item.salary}}</h3>
+          <h3>Fecha de ingreso: {{item.hiringDate}}</h3>
+          <hr>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
 </section>
-<p *ngIf="teachers.length === 0 && !isError && !isLoading">La lista esta vacia</p>
+<p *ngIf="teachers.length === 0 && !isError && !isLoading">La lista esta vacía</p>
 <p *ngIf="isLoading">Cargando...</p>

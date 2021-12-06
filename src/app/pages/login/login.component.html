@@ -5,13 +5,13 @@
     <h5>Ingresa tu correo y contraseña</h5>
  
     <form action="" class="formulario" (submit)="login()">
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard" class="matField">
         <mat-label id="email">Enter your email</mat-label>
         <input matInput required type="email" placeholder="user@example.com" name="email" [(ngModel)]="email">
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field> <br>
 
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard" class="matField">
         <mat-label for="pwd">Enter your password</mat-label>
         <input matInput required type="password" [type]="hide ? 'password' : 'text'" name="password"
           [(ngModel)]="password">

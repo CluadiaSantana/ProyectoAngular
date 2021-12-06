@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -23,7 +25,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatFormFieldModule,
     MatSidenavModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule,
+    MatDatepickerModule,
   ]
 })
 export class MaterialModule { }
