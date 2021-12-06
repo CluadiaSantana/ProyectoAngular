@@ -7,9 +7,9 @@
           placeholder="Student Id for search">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="matForm">
+      <mat-form-field appearance="fill" class="matForm" *ngIf="roleAdmin">
         <mat-label>Teacher Id</mat-label>
-        <input matInput *ngIf="roleAdmin" name="teachersId" [(ngModel)]="teachersId" class="form-control"
+        <input matInput  name="teachersId" [(ngModel)]="teachersId" class="form-control"
           placeholder="Teacher Id for search">
       </mat-form-field>
 

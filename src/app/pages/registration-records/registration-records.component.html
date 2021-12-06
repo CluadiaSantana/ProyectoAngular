@@ -3,11 +3,11 @@
     <form (submit)="getRecords()" class="searchForm">
       <mat-form-field appearance="fill" class="matForm">
         <mat-label>Student Id</mat-label>
-        <input matInput name="studenstId" *ngIf="(roleAdmin)" [(ngModel)]="studentsId" class="form-control"
+        <input matInput name="studenstId" [(ngModel)]="studentsId" class="form-control"
           placeholder="Student Id for search">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="matForm">
+      <mat-form-field appearance="fill" class="matForm" *ngIf="roleAdmin">
         <mat-label>Teacher Id</mat-label>
         <input matInput name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary"
           placeholder="Teacher Id for search">
