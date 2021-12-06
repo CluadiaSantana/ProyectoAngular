@@ -1,3 +1,42 @@
+<section class="buscador-students">
+  <div class="container">
+    <form (submit)="getRecords()" class="searchForm">
+      <mat-form-field appearance="fill" class="matForm">
+        <mat-label>Student Id</mat-label>
+        <input matInput name="studenstId" *ngIf="(roleAdmin)" [(ngModel)]="studentsId" class="form-control"
+          placeholder="Student Id for search">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="matForm">
+        <mat-label>Teacher Id</mat-label>
+        <input matInput name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary"
+          placeholder="Teacher Id for search">
+      </mat-form-field>
+      <button mat-raised-button class='but'>BUSCAR</button>
+    </form>
+  </div>
+</section>
+
+
+
+<p *ngIf="isError" class="error">No se pudo obtener la lista</p>
+<section class="clearfix" *ngIf="!isError">
+  <div class="grid " id="data" *ngFor="let item of records">
+    <div class="data-item col-12 col-md-6 col-lg-3 ">
+      <mat-card class="example-card">
+        <mat-card-title>Alumno</mat-card-title>
+        <mat-card-subtitle>Id: {{item.studentId}}</mat-card-subtitle>
+        <mat-card-content>
+          <h3>Maestro: {{item.teacherId}}</h3>
+          <h3>Fecha: {{item.date}}</h3>
+          <h3>Horario: {{item.hour}}</h3>
+          <h3>Status: {{item.status}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
 <section *ngIf="!roleStudent" class="buscador-students">
   <form (submit)="getRecords()">
       <input name="studenstId" [(ngModel)]="studentsId" class="form-control backbackPrimary" placeholder="Student Id for search">

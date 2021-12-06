@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MaterialModule } from './modules/material/material.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -22,6 +24,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './common/services/auth-guard-service.service';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { UpdateComponent } from './pages/update/update.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewRecordComponent } from './pages/new-record/new-record.component';
 
 @NgModule({
@@ -53,7 +56,10 @@ import { NewRecordComponent } from './pages/new-record/new-record.component';
     FormsModule,
     HttpClientModule,
     SocialLoginModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
+
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

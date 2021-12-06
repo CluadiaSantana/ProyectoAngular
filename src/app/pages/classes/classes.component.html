@@ -1,14 +1,41 @@
 <section *ngIf="!roleStudent" class="buscador-students">
-  <form (submit)="getClass()">
-      <input name="studenstId" [(ngModel)]="studentsId" class="form-control backbackPrimary" placeholder="Student Id for search">
-      <input  *ngIf="roleAdmin" name="teachersId" [(ngModel)]="teachersId" class="form-control backbackPrimary" placeholder="Teacher Id for search">
-      <button class='but' >BUSCAR</button>
-  </form>
+  <div class="container">
+    <form (submit)="getClass()" class="searchForm">
+      <mat-form-field appearance="fill" class="matForm">
+        <mat-label>Student Id</mat-label>
+        <input matInput name="studenstId" [(ngModel)]="studentsId" class="form-control"
+          placeholder="Student Id for search">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="matForm">
+        <mat-label>Teacher Id</mat-label>
+        <input matInput *ngIf="roleAdmin" name="teachersId" [(ngModel)]="teachersId" class="form-control"
+          placeholder="Teacher Id for search">
+      </mat-form-field>
+
+      <button mat-raised-button class='but'>BUSCAR</button>
+    </form>
+  </div>
 </section>
-<section class="clearfix" *ngIf="!isError">
+
+<section class="clearfix" *ngIf="!isError"> 
   <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
   <div class="grid " id="data" *ngFor="let item of classes">
     <div class="data-item col-12 col-md-6 col-lg-3 ">
+      <mat-card class="example-card">
+        <mat-card-title>Alumno</mat-card-title>
+        <mat-card-subtitle>Id: {{item.studentId}}</mat-card-subtitle>
+        <mat-card-content>
+          <h3>Maestro: {{item.teacherId}}</h3>
+          <h3>Año: {{item.year}}</h3>
+          <h3>Numero de clases: {{item.numClasses}}</h3>
+          <h3>Clases a la semana: {{item.weeklyHours}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
       <h2>Alumno: {{item.student[0].userName}}</h2>
       <h2>Alumno id: {{item.student[0].id}}</h2>
       <h3>Maestro: {{item.teacher[0].userName}}</h3>
@@ -21,4 +48,3 @@
 </section>
 <p *ngIf="classes.length === 0 && !isError && !isLoading">La lista esta vacia</p>
 <p *ngIf="isLoading">Cargando...</p>
-

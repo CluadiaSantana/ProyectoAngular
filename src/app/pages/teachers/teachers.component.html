@@ -1,19 +1,31 @@
-<section class="buscador-maestros">
-  <form (submit)="getTeacherId()">
-      <input name="idSearch" [(ngModel)]="idSearch" class="form-control backbackPrimary" placeholder="´Teacher Id for search">
-      <button class='but'>BUSCAR</button>
+<div class="container">
+  <form (submit)="getTeacherId()" class="searchForm">
+    <mat-form-field appearance="fill" class="matForm">
+      <mat-label>Teacher Id</mat-label>
+      <input matInput name="idSearch" [(ngModel)]="idSearch" class="form-control" placeholder="Teacher Id for search">
+    </mat-form-field>
+    <button mat-raised-button class="search but">BUSCAR</button>
   </form>
-</section>
+</div>
+
 <p *ngIf="isError" class="error">No se pudo obtener la lista</p>
 <section class="clearfix" *ngIf="!isError">
   <div class="grid " id="data" *ngFor="let item of teachers">
     <div class="data-item col-12 col-md-6 col-lg-3 ">
-      <h2>Maestro: {{item.userName}}</h2>
-      <h2>Maestro id: {{item.id}}</h2>
-      <h3>Fecha de inicio: {{item.hiringDate}}</h3>
-      <h3>Status: {{item.status}}</h3>
-      <h3>Salary: {{item.salary}}</h3>
-      <h3>Hiring date: {{item.hiringDate}}</h3>
+      <mat-card class="example-card">
+        <mat-card-title>Maestro</mat-card-title>
+        <mat-card-subtitle>Id: {{item.userName}}</mat-card-subtitle>
+        <mat-card-content>
+          <h3>Fecha de inicio: {{item.hiringDate}}</h3>
+          <h3>Status: {{item.status}}</h3>
+          <h3>Salary: {{item.salary}}</h3>
+          <h3>Hiring date: {{item.hiringDate}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </section>

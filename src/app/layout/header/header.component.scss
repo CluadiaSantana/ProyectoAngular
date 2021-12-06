@@ -1,27 +1,13 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background: #333;
-  color: #eee;
-  width: 100%;
-}
-
 input#abrir-cerrar {
   visibility: hidden;
   position: absolute;
   top: -9999px;
 }
 
-
 label[for="abrir-cerrar"] {
   cursor: pointer;
   padding: 1rem;
-  color: #fff;
+  color: white;
   display: inline-block;
   width: 100%;
 }
@@ -92,15 +78,12 @@ input#abrir-cerrar:checked+label[for="abrir-cerrar"] .abrir {
   margin: 4rem auto;
   display: block;
   width: 80%;
-  min-width: 200px;
 }
 
 .sidebar a {
   display: block;
   font-size: 120%;
-  color: #eee;
   text-decoration: none;
-
 }
 
 .sidebar a:hover {
@@ -125,25 +108,6 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-button:hover {
-  background: rgb(117, 174, 231);
-  color: white;
-}
-
-button {
-  color: black;
-  font-weight: bold;
-  background-color: rgb(255, 255, 255);
-  float: right;
-  width: 10rem;
-  height: 3rem;
 }
 
 li a {
@@ -152,4 +116,35 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.toolbar button{
+  margin-right: 1.5rem;
+}
+
+.menu-icon{
+  margin-top: 1rem; 
+  font-size: 2rem;
+}
+
+.menu button{
+  margin-bottom: 1rem; 
+  background-color: azure;
+  color: #00324b;
+  transition: all .5s ease;
+}
+
+.menu button:hover{
+  margin-bottom: 1rem; 
+  background-color: rgb(116, 74, 199);
+  color: #fff;
+}
+
+.toolbar ul button{
+  border-color: transparent;
+}
+
+.toolbar ul button:hover{
+  border-color: transparent;
+  color: rgb(116, 74, 199);
 }
