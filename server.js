@@ -8,10 +8,9 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname,'dist','ProyectoAngular')));
 
-app.get('*',(req,res) => {
-    res.sendFile(path.join(__dirname,'dist','ProyectoAngular','index.html'));
-});
-
+app.get("*", function (req, res) {
+    res.sendFile(__dirname + "/path/to/index.html")
+})
 app.listen(port, () => {
     console.log('app is listening in port'+ port);
 });
