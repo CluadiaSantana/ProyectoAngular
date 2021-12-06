@@ -3,7 +3,7 @@ import { AuthGuardService } from './auth-guard-service.service';
 
  
 
-describe('AuthGuardServic', () => {
+describe('AuthGuardService', () => {
   let service: AuthGuardService;
 
   beforeEach(() => {
