@@ -6,6 +6,6 @@ export interface Classes {
     studentId: number;
     teacherId: number;
     weeklyHours: number;
-    teacher?: User[];
-    
+    teacher: User[];
+    student: User[];
 }

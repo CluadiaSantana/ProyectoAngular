@@ -1,15 +1,15 @@
 <h1 >Informacion personal de Usuarios</h1>
 <h5 >Actualiza tus datos</h5>
-
-<form [formGroup]="form" (submit)="sign()" class="center-block"> 
+<div class="grid " id="data" *ngFor="let item of users">
+<form [formGroup]="form" (submit)="upload()" class="center-block"> 
     <div class="center-block" >   
         <label for="userName">Nombre: </label>
-        <input type="text" name="userName" formControlName="userName" >
+        <input type="text" name="userName" formControlName="userName" placeholder="{{item.userName}}" >
         <p *ngIf="!nameError">  Ingresa nombre valido </p>
     </div>
     <div>   
         <label for="email">Email: </label>
-        <input type="email" name="email" formControlName="email">
+        <input type="email" name="email" formControlName="email" placeholder="{{item.email}}">
         <p *ngIf="!emailError">  Ingresa email valido </p>
     </div>
     <div>   
@@ -22,7 +22,16 @@
         <p *ngIf="!confirmError">  Deben coincidir los passwords </p>
         <p *ngIf="!passwordError">  El password debe contener 8 caracteres mayusculas minusculas y caracteres especiales </p>
     </div>
+    <div>
+        <label for="role" >Rol</label>
+    <select  name="role" formControlName="role" >
+        <option value="student">Estudiante</option>
+        <option value="teacher">Maestro</option>
+        <option value="Admin">Administrador</option>
+    </select>
+    </div>
     <div>   
         <button>Guardar</button>
     </div>    
 </form>
+</div>

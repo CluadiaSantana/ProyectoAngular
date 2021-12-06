@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/common/services/user.service';
 import { User } from 'src/app/common/datatypes/user';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { UploadService } from 'src/app/common/services/upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +17,7 @@ export class UsersComponent implements OnInit {
   isError: boolean = false;
   isLoading: boolean = false;
   noFound: boolean=false;
-  constructor(private userService: UserService, private authenticationService : AuthenticationService) { }
+  constructor(private userService: UserService, private authenticationService : AuthenticationService, private uploadService: UploadService,private router: Router) { }
   
  
 
@@ -30,6 +32,7 @@ export class UsersComponent implements OnInit {
         this.isError = true;
         this.isLoading = false;
       })
+      this.uploadService.cleanUpload();
   }
 
   getUserId(){
@@ -65,7 +68,8 @@ export class UsersComponent implements OnInit {
     return true;
   }
 
-  update(){
-    
+  update(id : String):any{
+        this.uploadService.goUpload(id);
+        this.router.navigate(['/update']);
   }
 }

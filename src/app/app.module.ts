@@ -25,6 +25,7 @@ import { AuthGuardService } from './common/services/auth-guard-service.service';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { UpdateComponent } from './pages/update/update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewRecordComponent } from './pages/new-record/new-record.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignInComponent,
     MyprofileComponent,
     UpdateComponent,
+    NewRecordComponent
 
   ],
   imports: [

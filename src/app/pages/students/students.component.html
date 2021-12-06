@@ -29,7 +29,16 @@
           <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
+      <h2>Alumno: {{item.userName}}</h2>
+      <h2>Alumno id: {{item.id}}</h2>
+      <h3>Fecha de inscripcion: {{item.inscriptionDate}}</h3>
+      <h3>Graduacion: {{item.graduationDate}}</h3>
+      <h3>Faltas: {{item.abscences}}</h3>
+      <h3>Clases tomadas: {{item.totalClasses}}</h3>
+      <h3>Video de graduacion: {{item.urlVideo}}</h3>
+      <button class="update" (click)="newRecord(item.id)">Nuevo registro</button>
     </div>
+    
   </div>
 </section>
 <p *ngIf="students.length === 0 && !isError && !isLoading">La lista esta vacia</p>

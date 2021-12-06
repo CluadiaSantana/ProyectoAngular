@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SignService } from 'src/app/common/services/sign.service';
 import { Router } from '@angular/router'; 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/common/datatypes/user';
+import { UserService } from 'src/app/common/services/user.service';
+import { UploadService } from 'src/app/common/services/upload.service';
 
 @Component({
   selector: 'app-update',
@@ -15,32 +16,74 @@ export class UpdateComponent implements OnInit {
   nameError: boolean=true;
   passwordError: boolean=true;
   confirmError: boolean=true;
-  title = 'fileUpload';
-  images: any;
+  users: User[]=[];
+  pusername:string ='prueba';
+  email:string="";
+  usern:string="";
+  role:string="";
 
-  constructor(private signService: SignService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) { 
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder, private uploadService: UploadService) { 
     this.form= this.formBuilder.group({
-      userName: ['',Validators.compose( 
-        [Validators.required, Validators.pattern('[a-zA-Z\s ]+')]
+      userName: ['' ,Validators.compose( 
+        [ Validators.pattern('[a-zA-Z\s ]+')]
         )],
-      email: ['',Validators.compose([Validators.required, Validators.email])],
-      password: ['',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])],
-      confirm: ['',Validators.compose([Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])]
+      role: [''],
+      email: ['',Validators.compose([ Validators.email])],
+      password: ['',Validators.compose([Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])],
+      confirm: ['',Validators.compose([Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])]
     }, {
       validators: this.compararPasswords.bind(this)
     });
   }
+  ngOnInit(): void {
+    this.userService.getUsers(this.uploadService.getUpload()).then(response=>{
+      this.users = [];
+      this.users.push(response)
+      this.pusername=this.users[0].userName;
+    }).catch(e=>{
+      this.users=[];
+    })
+  }
 
-  sign(){
+  upload(){
+    
     if(this.form.valid){
-      this.signService.sign({
-        email: this.form.controls['email'].value,
-        password: this.form.controls['password'].value,
-        userName: this.form.controls['userName'].value,
-        role: 'student'
-      }).then((response)=>{
-        this.router.navigate(['/login']);
-      })
+      this.usern=this.form.controls['userName'].value;
+      this.email=this.form.controls['email'].value;
+      this.role=this.form.controls['role'].value;
+      if(this.form.controls['email'].pristine){
+        this.email=this.users[0].email;
+        console.log(this.users);
+      }
+      if(this.form.controls['userName'].pristine){
+        this.usern=this.users[0].userName;
+      }
+      if(this.form.controls['role'].pristine){
+        this.role=this.users[0].role;
+      }
+      if(this.form.controls['password'].pristine){
+        this.userService.uploadUser(this.uploadService.getUpload(),{
+          email: this.email,
+          userName: this.usern,
+          role: this.role
+        }).then(resp=>{
+          this.router.navigate(['/users']);
+        }).catch(e=>{
+          this.router.navigate(['/users']);
+        })
+      }else{
+        this.userService.uploadUser(this.uploadService.getUpload(),{
+          email: this.email,
+          userName: this.usern,
+          password: this.form.controls['password'].value,
+          role: this.role
+        }).then(resp=>{
+          this.router.navigate(['/users']);
+        }).catch(e=>{
+          this.router.navigate(['/users']);
+        })
+      }
+      
     }else{
       this.nameError= this.form.controls['userName'].valid;
       this.emailError= this.form.controls['email'].valid;
@@ -48,8 +91,7 @@ export class UpdateComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
+ 
 
   compararPasswords() {
     if (!this.form) { return null; }
@@ -63,21 +105,4 @@ export class UpdateComponent implements OnInit {
     }
   }
 
-  selectImage(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.images = file;
-    }
-  }
-
-  onSubmit(){
-    const formData = new FormData();
-    formData.append('file', this.images);
-
-    this.http.post<any>('http://localhost:3001/file', formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-  }
-
-}3
+}

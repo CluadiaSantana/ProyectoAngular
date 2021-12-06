@@ -19,9 +19,7 @@ export class MyprofileComponent implements OnInit {
 
   
   ngOnInit(): void {
-    let id: string = this.authentication.getUserId();
-    //console.log("el id es",id)
-    this.userService.getUsers(id).then((response: User)=>{
+    this.userService.getMyUsers().then((response: User)=>{
       console.log(response);
       this.users.push(response)
       //console.log("entro init")
@@ -47,7 +45,7 @@ export class MyprofileComponent implements OnInit {
       fd.append('file', this.image);
       //console.log("entro submit")
       this.data.updateProfileImage(fd).subscribe((res)=>{
-        this.userService.getUsers(this.authentication.getUserId()).then((response: User)=>{
+        this.userService.getMyUsers().then((response: User)=>{
           console.log("submitPhoto",response)
           this.users = [];
           this.users.push(response)

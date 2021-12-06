@@ -23,12 +23,9 @@ export class RecordService {
         })
         .toPromise();
     } else {
-      let url: string =
-        environment.host + environment.apiPath + '/records?studentId=' + data;
-      console.log(url);
       return this.httpClient
         .get(
-          environment.host + environment.apiPath + '/records?studentId=' + data,
+          environment.host + environment.apiPath + '/records' + data,
           {
             headers: httpHeaders,
           }
@@ -45,7 +42,8 @@ export class RecordService {
         headers: httpHeaders,
       })
       .toPromise();
-  }; 
+  };
+   
   putRecord(teacherId: string, studentId: string, data: any) {
     const httpHeaders = new HttpHeaders({
       'x-auth': this.authenticationService.getToken(),

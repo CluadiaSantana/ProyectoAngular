@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from 'src/app/common/datatypes/student';
+import { NewRecordService } from 'src/app/common/services/new-record.service';
 import { StudentService } from 'src/app/common/services/student.service';
 
 
@@ -14,10 +16,10 @@ export class StudentsComponent implements OnInit {
   students: Student [] = [];
   isError: boolean = false;
   isLoading: boolean = false;
-  constructor(private stundetService: StudentService) { }
+  constructor(private stundetService: StudentService, private newRecordService: NewRecordService, private router: Router) { }
 
   ngOnInit(): void {
-    
+    this.newRecordService.cleanRecord();
     this.stundetService.getStudent("").then(response=>{
       this.students =response;
       this.isError = false;
@@ -54,6 +56,11 @@ getStudentId(){
     this.students=[];
   })
   this.idSearch="";
+}
+
+newRecord(studen:string){
+  this.newRecordService.goRecord(studen);
+  this.router.navigate(['/newRecord']);
 }
 
 }
